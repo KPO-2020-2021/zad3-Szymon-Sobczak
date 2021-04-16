@@ -67,11 +67,9 @@ Vector Vector::operator * (const double &tmp) {
 
 Vector Vector::operator / (const double &tmp) {
     Vector result;
-
     for (int i = 0; i < SIZE; ++i) {
         result[i] = size[i] / tmp;
     }
-
     return result;
 }
 /******************************************************************************

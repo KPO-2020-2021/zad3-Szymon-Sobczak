@@ -9,7 +9,7 @@
 #include "matrix.hh"
 #include "lacze_do_gnuplota.hh"
 
-#define LENGTH_DIFF 0.0000000001 /* Warotsc minimalnej roznicy dlugosci bokow prostokata */
+
 
 /************************************************************************************************************************
  | Klasa modelujaca w programie pojecie prostokata, ktorego wierzcholki sa wyrazone za pomoca wektorow.                  |
@@ -31,6 +31,7 @@ class Rectangle {
         Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD);
         Rectangle Translate_rec(Vector const vector);
         Rectangle Rotate_rec(int const multiplier, double const angle);
+        bool Collision_detection(Rectangle Rec2);
         void Is_it_rec();
         void Write_rec_to_file(const char *sNazwaPliku) const;
 };

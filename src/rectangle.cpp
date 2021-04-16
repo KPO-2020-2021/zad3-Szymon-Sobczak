@@ -158,8 +158,8 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
         else
             std::cout << ":O Krotsze przeciwlegle boki nie sa sobie rowne" << std::endl;
     }
-    std::cout << "Dlugosc pierwszego boku: " << a << std::endl;
-    std::cout << "Dlugosc drugiego boku: " << c << std::endl;
+    std::cout << "Dlugosc pierwszego boku: " << std::fixed << std::setprecision(10) << a << std::endl;
+    std::cout << "Dlugosc drugiego boku: " << std::fixed << std::setprecision(10) << c << std::endl;
     std::cout << std::endl;
     
     if(b-d < LENGTH_DIFF && d-b < LENGTH_DIFF){
@@ -174,7 +174,13 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
         else
             std::cout << ":O  Krotsze przeciwlegle boki nie sa sobie rowne " << std::endl;
     }
-    std::cout << "Dlugosc pierwszego boku: " << b << std::endl;
-    std::cout << "Dlugosc drugiego boku: " << d << std::endl;
+    std::cout << "Dlugosc pierwszego boku: " << std::fixed << std::setprecision(10) << b << std::endl;
+    std::cout << "Dlugosc drugiego boku: " << std::fixed << std::setprecision(10) << d << std::endl;
     std::cout << std::endl;
  }
+/*
+bool Collision_detection(Rectangle Rec2)
+{
+
+    return 0;
+}*/

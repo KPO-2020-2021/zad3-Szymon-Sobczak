@@ -30,8 +30,8 @@ int main() {
               << PROJECT_VERSION_TWEAK /* zmiany estetyczne itd. */
               << std::endl; 
 
-    double X[]={2,2}, Y[]={50,2}, Z[]={50,35}, U[]={2,35}, Vt[]={15,30}, angle, multiplier, T_vector[SIZE]; /* Inicjalizacja tablic z wartosciami wierzcholkow prostokata */
-    Vector A(X),B(Y),C(Z),D(U),T(Vt);
+    double X[]={2,2}, Y[]={50,2}, Z[]={50,35}, U[]={2,35}, Vt[]={15,30}, angle, multiplier; /* Inicjalizacja tablic z wartosciami wierzcholkow prostokata */
+    Vector A(X),B(Y),C(Z),D(U),T(Vt),T_vector;
     char Option;
     Rectangle Rec(A,B,C,D); /* Inicjalizacja prostokata wspolrzednymi wierzcholkow */
     PzG::LaczeDoGNUPlota Link;  /* Ta zmienna jest potrzebna do wizualizacji rysunku prostokata */
@@ -57,14 +57,14 @@ int main() {
         Rec.Write_rec_to_file("prostokat.dat");
         Link.Rysuj();
         std::cout << "Poczatkowe wspolrzedne prostokata: " << std::endl;
-        std::cout << Rec;
+        Rec.Is_it_rec();
         std::cout << "menu:" << std::endl
                   << "o - obrot prostokata o zadany kat " << std::endl
                   << "p - przesuniecie prostokata o zadany wektor " << std::endl
                   << "w - wyswietlenie wspolrzednych wierzcholkow " << std::endl
                   << "m - wyswietl menu" << std::endl
                   << "k - koniec dzialania programu" << std::endl;
-        while (1)
+        while (Option != 'k')
         {   
             std::cout << "Twoj wybor? (m - menu) > ";
             std::cin >> Option;
@@ -86,13 +86,16 @@ int main() {
                     std::cin >> Option;
                     switch(Option){
                         case 'T':
+                        for (int i=0; i< multiplier;i++){
                             for(int j=0;j < FRAMES; j++){
-                                Rec.Rotate_rec(multiplier,angle/100);
+                                Rec.Rotate_rec(multiplier,angle/FRAMES);
                                 Rec.Write_rec_to_file("prostokat.dat");
                                 usleep(4000);
                                 Link.Rysuj();
                                 usleep(4000);
                             }
+                        }
+                          
                             Rec.Is_it_rec();
                         break;
 
@@ -111,7 +114,7 @@ int main() {
 
                 case 'p':
                     std::cout << "Wprowadz wspolrzedne wektora translacji w postaci liczb x i y > ";
-                    std::cin >> T_vector[0] >> T_vector[1];
+                    std::cin >> T_vector;
                     if(std::cin.fail()){
                         throw std::runtime_error("Podano wyrazenie nie bedace typu double");
                         break;
@@ -120,9 +123,9 @@ int main() {
                     std::cin >> Option;
                     switch(Option){
                         case 'T':
-                            T_vector[0]/=FRAMES; T_vector[1]/=FRAMES;
+                            T_vector/FRAMES;
                             for(int i=0;i<FRAMES;i++){
-                                Rec.Translate_rec(T_vector);
+                                Rec.Translate_rec(T_vector/FRAMES);
                                 Rec.Write_rec_to_file("prostokat.dat");
                                 usleep(4000);
                                 Link.Rysuj();
@@ -160,7 +163,6 @@ int main() {
 
                 case 'k':
                     std::cout << ":) Konczenie pracy programu" << std::endl;
-                    exit(1);
                 break;
 
                 default:
