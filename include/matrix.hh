@@ -8,6 +8,16 @@
 #include <cstdlib>
 #include <cmath>
 
+
+/*
+* Klasa modelujaca w programie pojecie macierzy kwadratowej. 
+* Klasa posiada prywatne pole "_Matrix", stanowi zbior wartosci macierzy rotacji. Jestt to tablica dwuwymiarowa dla warosci typu double.
+* Klasa posiada publiczny interfejs pozwalajacy na wprowazdanie, zmiane i odczytywanie danych z macierzy rotacji.
+* Klasa zawiera publiczne przeciazenia operatorow funkcyjnych opowiedzialnych za wprowadzanie i odczytywanie wartosci z macierzy rotacji,
+* oraz przeciazenie mnozenia macierzy razy wetkor. 
+* Klasa posiada metode inicjujaca macierz wartosciami funkcji trygonometrycznych dla zadanego konta obrotu.
+*/
+
 class Matrix {
 private:
     double value[SIZE][SIZE];               // Wartosci macierzy

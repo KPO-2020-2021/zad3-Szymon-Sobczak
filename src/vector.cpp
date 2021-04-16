@@ -100,8 +100,6 @@ Vector::Vector(double tmp[SIZE]) {
     }
 }
 
-
-
 /******************************************************************************
  |  Funktor wektora.                                                          |
  |  Argumenty:                                                                |
@@ -109,13 +107,12 @@ Vector::Vector(double tmp[SIZE]) {
  |  Zwraca:                                                                   |
  |      Wartosc wektora w danym miejscu tablicy jako stala.                   |
  */
-const double &Vector::operator [] (int index) const {
+const double & Vector::operator [] (int index) const {
     if (index < 0 || index >= SIZE) {
         throw std::runtime_error("Bledna wartosc indeksu");
     } 
     return size[index];
 }
-
 
 /******************************************************************************
  |  Funktor wektora.                                                          |
@@ -124,7 +121,7 @@ const double &Vector::operator [] (int index) const {
  |  Zwraca:                                                                   |
  |      Wartosc wektora w danym miejscu tablicy.                              |
  */
-double &Vector::operator[](int index) {
+double & Vector::operator[](int index) {
     return const_cast <double &> (const_cast <const Vector *> (this)->operator[](index));
 }
 
@@ -137,7 +134,7 @@ double &Vector::operator[](int index) {
  */
 std::ostream &operator << (std::ostream &out, Vector const &tmp) {
     for (int i = 0; i < SIZE; ++i) {
-        out << std::fixed << std::setprecision(10) << tmp.size[i]<< "\t";
+        out << std::fixed << std::setprecision(10) << tmp[i]<< "\t";
     }
     return out;
 }

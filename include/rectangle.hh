@@ -9,8 +9,6 @@
 #include "matrix.hh"
 #include "lacze_do_gnuplota.hh"
 
-
-
 /************************************************************************************************************************
  | Klasa modelujaca w programie pojecie prostokata, ktorego wierzcholki sa wyrazone za pomoca wektorow.                  |
  | Klasa posiada prywatne pole bedace tablica wektoror, opisujace wektorowo pozycje wierzcholkow prosotkata.             |
@@ -22,16 +20,16 @@
 */
 
 class Rectangle {
-    friend std::ostream & operator << (std::ostream & Strm, const Rectangle & Rc);
-    friend std::istream & operator >> (std::istream & Strm, Rectangle & Rc);
     private:  
         Vector Corners[4];
     public:   
-        Rectangle() = default;// {Vector Vec; Corners[0]=Corners[1]=Corners[2]=Corners[3]=Vec;};
+        Rectangle() = default;
         Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD);
+        const Vector & operator [] (int index) const;
+        Vector & operator [] (int index);
         Rectangle Translate_rec(Vector const vector);
         Rectangle Rotate_rec(int const multiplier, double const angle);
-        bool Collision_detection(Rectangle Rec2);
+       // bool Collision_detection(Rectangle Rec2);
         void Is_it_rec();
         void Write_rec_to_file(const char *sNazwaPliku) const;
 };

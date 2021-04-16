@@ -8,9 +8,17 @@
 #include <fstream>
 #include <stdexcept>
 
+/****************************************************************************************
+ | Klasa modelujaca w programie pojecie wektora.                                        |
+ | Klasa posiada prywatne pole bedace tablica- zbiorem wspolrzednych wekotra "_Coord".  |
+ | Klasa posiada publiczny interfejs pozwalajacy na wprowazdanie, zmiane i odczytywanie |
+ |   danych o wspolrzednych wektora.                                                    |
+ | Klasa zawiera publiczne przeciazenia operatorow indeksujacych opowiedzialnych za     |
+ |   wprowadzanie i odczytywanie wspolrzendych wektora.                                 |
+ | oraz przeciazenie operatora dodawania dwoch wektorow.                                |
+ */
+
 class Vector {
-    friend std::ostream & operator << (std::ostream &out, Vector const &tmp);
-    friend std::istream & operator >> (std::istream &in, Vector &tmp);
 private:
     double size[SIZE];     //Tablica wektora
 public:

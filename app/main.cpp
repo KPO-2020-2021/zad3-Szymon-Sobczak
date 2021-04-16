@@ -11,9 +11,10 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include <unistd.h>
 
 #include "exampleConfig.h"
-#include "example.h"
+//#include "example.h"
 #include "vector.hh"
 #include "matrix.hh"
 #include "rectangle.hh"
@@ -35,26 +36,26 @@ int main() {
     char Option;
     Rectangle Rec(A,B,C,D); /* Inicjalizacja prostokata wspolrzednymi wierzcholkow */
     PzG::LaczeDoGNUPlota Link;  /* Ta zmienna jest potrzebna do wizualizacji rysunku prostokata */
-    /* 
-    *   Wspolrzedne wierzcholkow beda zapisywane w pliku "prostokat.dat" 
-    *   Ponizsze metody powoduja, ze dane z pliku beda wizualizowane na dwa sposoby:
-    *   1.Rysowane jako linia ciagla o grubosci 2 piksele
+    /********************************************************************************
+     |   Wspolrzedne wierzcholkow beda zapisywane w pliku "prostokat.dat"           |
+     |  Ponizsze metody powoduja, ze dane z pliku beda wizualizowane na dwa sposoby:|
+     |  1.Rysowane jako linia ciagla o grubosci 2 piksele                           |
     */
-    Link.DodajNazwePliku("prostokat.dat",PzG::RR_Ciagly,2);
-    /*
-    *   2. Rysowane jako zbior punktow reprezentowanych przez kwadraty,
-    *    których połowa długości boku wynosi 2.
+    Link.DodajNazwePliku("../datasets/prostokat.dat",PzG::RR_Ciagly,2);
+    /*******************************************************************************
+     |   2. Rysowane jako zbior punktow reprezentowanych przez kwadraty,           |
+     |   których połowa długości boku wynosi 2.                                    |
     */
-    Link.DodajNazwePliku("prostokat.dat",PzG::RR_Punktowy,2);
-    /* 
-    *  Ustawienie trybu rysowania 2D, tzn. rysowany zbiór punktów
-    *   znajduje się na wspólnej płaszczyźnie. Z tego powodu powoduj
-    *   jako wspolrzedne punktow podajemy tylko x,y.
+    Link.DodajNazwePliku("../datasets/prostokat.dat",PzG::RR_Punktowy,2);
+    /******************************************************************************* 
+     | Ustawienie trybu rysowania 2D, tzn. rysowany zbiór punktów                  |
+     |   znajduje się na wspólnej płaszczyźnie. Z tego powodu powoduj              |
+     |  jako wspolrzedne punktow podajemy tylko x,y.                               |
     */
     Link.ZmienTrybRys(PzG::TR_2D);
 
     try{
-        Rec.Write_rec_to_file("prostokat.dat");
+        Rec.Write_rec_to_file("../datasets/prostokat.dat");
         Link.Rysuj();
         std::cout << "Poczatkowe wspolrzedne prostokata: " << std::endl;
         Rec.Is_it_rec();
@@ -86,22 +87,21 @@ int main() {
                     std::cin >> Option;
                     switch(Option){
                         case 'T':
-                        for (int i=0; i< multiplier;i++){
-                            for(int j=0;j < FRAMES; j++){
-                                Rec.Rotate_rec(multiplier,angle/FRAMES);
-                                Rec.Write_rec_to_file("prostokat.dat");
-                                usleep(4000);
-                                Link.Rysuj();
-                                usleep(4000);
+                            for (int i=0; i< multiplier;i++){
+                                for(int j=0;j < FRAMES; j++){
+                                    Rec.Rotate_rec(multiplier,angle/FRAMES);
+                                    Rec.Write_rec_to_file("../datasets/prostokat.dat");
+                                    usleep(4000);
+                                    Link.Rysuj();
+                                    usleep(4000);
+                                }
                             }
-                        }
-                          
                             Rec.Is_it_rec();
                         break;
 
                         case 'N':
                             Rec.Rotate_rec(multiplier,angle); /* Wywolanie metody obracajacej prostokat wybrana ilosc razy o wybrany kat w stopniach */
-                            Rec.Write_rec_to_file("prostokat.dat");
+                            Rec.Write_rec_to_file("../datasets/prostokat.dat");
                             Rec.Is_it_rec();
                             Link.Rysuj();
                         break;
@@ -126,7 +126,7 @@ int main() {
                             T_vector/FRAMES;
                             for(int i=0;i<FRAMES;i++){
                                 Rec.Translate_rec(T_vector/FRAMES);
-                                Rec.Write_rec_to_file("prostokat.dat");
+                                Rec.Write_rec_to_file("../datasets/prostokat.dat");
                                 usleep(4000);
                                 Link.Rysuj();
                                 usleep(4000); 
@@ -136,7 +136,7 @@ int main() {
 
                         case 'N':
                             Rec.Translate_rec(T_vector);
-                            Rec.Write_rec_to_file("prostokat.dat");
+                            Rec.Write_rec_to_file("../datasets/prostokat.dat");
                             Rec.Is_it_rec();
                             Link.Rysuj();
                         break;

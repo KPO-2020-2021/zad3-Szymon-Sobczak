@@ -15,7 +15,6 @@ Matrix::Matrix() {
     }
 }
 
-
 /******************************************************************************
  |  Konstruktor parametryczny klasy Matrix.                                   |
  |  Argumenty:                                                                |
@@ -30,7 +29,6 @@ Matrix::Matrix(double tmp[SIZE][SIZE]) {
         }
     }
 }
-
 
 /******************************************************************************
  |  Realizuje mnozenie macierzy przez wektor.                                 |
@@ -51,7 +49,6 @@ Vector Matrix::operator * (Vector tmp) {
     return result;
 }
 
-
 /******************************************************************************
  |  Funktor macierzy                                                          |
  |  Argumenty:                                                                |
@@ -60,15 +57,15 @@ Vector Matrix::operator * (Vector tmp) {
  |  Zwraca:                                                                   |
  |      Wartosc macierzy w danym miejscu tablicy.                             |
  */
-double &Matrix::operator()(unsigned int row, unsigned int column) {
+double & Matrix::operator()(unsigned int row, unsigned int column) {
 
     if (row >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem"; 
+        throw std::runtime_error("Bledna wartosc indeksu");
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
     if (column >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem";
+        throw std::runtime_error("Bledna wartosc indeksu");
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
@@ -87,12 +84,12 @@ double &Matrix::operator()(unsigned int row, unsigned int column) {
 const double &Matrix::operator () (unsigned int row, unsigned int column) const {
 
     if (row >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem";
+        throw std::runtime_error("Bledna wartosc indeksu");
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
     if (column >= SIZE) {
-        std::cout << "Error: Macierz jest poza zasiegiem";
+        throw std::runtime_error("Bledna wartosc indeksu");
         exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
     }
 
@@ -148,8 +145,6 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     }
     return out;
 }
-
-
 
 /******************************************************************************
  |  Metoda klasy Matrix inicjalizujaca macierz rotacji wartosciami            |
