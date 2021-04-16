@@ -16,7 +16,6 @@ private:
 public:
     Vector();
     Vector(double [SIZE]);
-     //Vector(double a, double b) {size[0]=a;size[1]=b;}
     Vector operator + (const Vector &v);
     Vector operator - (const Vector &v);
     Vector operator * (const double &tmp);

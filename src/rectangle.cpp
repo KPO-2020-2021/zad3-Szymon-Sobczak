@@ -170,23 +170,11 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
     }
     else{ 
         if(a >= b && a >= d && c >= b && c >= d)
-            std::cout << ":O Dluzsze przeciwlegle boki nie sa sobie rowne" << std::endl;
+            std::cout << ":O Dluzsze przeciwlegle boki nie sa sobie rowne " << std::endl;
         else
-            std::cout << ":O  Krotsze przeciwlegle boki nie sa sobie rown " << std::endl;
+            std::cout << ":O  Krotsze przeciwlegle boki nie sa sobie rowne " << std::endl;
     }
     std::cout << "Dlugosc pierwszego boku: " << b << std::endl;
     std::cout << "Dlugosc drugiego boku: " << d << std::endl;
     std::cout << std::endl;
  }
-
-void Rectangle::Animated_rotation(int const multiplier, double const angle,const char *sNazwaPliku, PzG::LaczeDoGNUPlota Link){
-    double temp= angle*100;
-    for(int i=0;i<multiplier;i++)
-        for(int j=0;j < temp; j++){
-            Rotate_rec(1,(1));
-            Write_rec_to_file(sNazwaPliku);
-            usleep(4000);
-            Link.Rysuj();
-            usleep(4000);
-        }
-}

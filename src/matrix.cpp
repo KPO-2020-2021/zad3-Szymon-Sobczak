@@ -100,12 +100,12 @@ const double &Matrix::operator () (unsigned int row, unsigned int column) const 
 }
 
 /******************************************************************************
- |  Przeciążenie dodawania macierzy                                                          |
+ |  Przeciążenie dodawania macierzy                                           |
  |  Argumenty:                                                                |
- |      this - macierz, czyli pierwszy skladnik dodawania,                     |
- |      v - wektor, czyli drugi skladnik dodawania.                                               |
+ |      this - macierz, czyli pierwszy skladnik dodawania,                    |
+ |      v - wektor, czyli drugi skladnik dodawania.                           |
  |  Zwraca:                                                                   |
- |      Macierz - iloczyn dwóch podanych macierzy.                  |
+ |      Macierz - iloczyn dwóch podanych macierzy.                            |
  */
 Matrix Matrix::operator + (Matrix tmp) {
     Matrix result;
@@ -121,7 +121,7 @@ Matrix Matrix::operator + (Matrix tmp) {
  |  Przeciazenie operatora >>                                                 |
  |  Argumenty:                                                                |
  |      in - strumien wyjsciowy,                                              |
- |      mat - macierz.                                                         |
+ |      mat - macierz.                                                        |
  */
 std::istream &operator>>(std::istream &in, Matrix &mat) {
     for (int i = 0; i < SIZE; ++i) {
@@ -149,17 +149,17 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     return out;
 }
 
-/*
-* Metoda klasy Macierz2x2 inicjalizujaca macierz rotacji wartosciami funkcji trygonometrycznych dla wybranego kata.
-* Warunki wstepne:
-*   angle- wybrany kat o jaki ma zostac obrocony prostokat, musi byc wartoscia typu double.
-* Warunki koncowe:
-*   brak.
-* Argumenty:
-*   angle - wartosc double kata o jaki ma zostac obrocony prostokat.
-* Zwraca:
-*   Poprawnie zainizalinzowana wartoscami macierz typu Macierz2x2. 
-*/
+
+
+/******************************************************************************
+ |  Metoda klasy Matrix inicjalizujaca macierz rotacji wartosciami            |
+ |  funkcji trygonometrycznych dla wybranego kata.                            |
+ |  Argumenty:                                                                |
+ |      this - macierz, ktora ma zostac zainicjowana wartosciami.             |
+ |      angle - wartosc double kata o jaki ma zostac obrocony prostokat.      |
+ |  Zwraca:                                                                   |
+ |      Poprawnie zainizalinzowana wartoscami macierz typu Matrix.            |
+ */
 
 Matrix Matrix::Fill_matrix(double angle){
     double angle_radians = angle * M_PI / 180.0;
