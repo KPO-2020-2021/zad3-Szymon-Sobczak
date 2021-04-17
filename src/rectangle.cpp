@@ -1,6 +1,21 @@
 #include "rectangle.hh"
 
 /****************************************************************************************************************
+ | domyślny konstruktor obiektu typu Rectangle.                                                                 |
+ | Konstruktor pozwala na inicjalizacje prostokata z uzyciem wektorow.                                          | 
+ | Argumenty:                                                                                                   |
+ |  break.                                                                                                      | 
+ | Zwraca:                                                                                                      |
+ |  Prostokat o wierzcholakach zainicjowanych wartosciami werkotrow zerowych.                                   |
+ */
+
+Rectangle::Rectangle(){
+    for (int i=0;i<4;i++)
+        Corners[i] = Vector();    
+}
+
+
+/****************************************************************************************************************
  | Alternatywny konstruktor obiektu typu Rectangle.                                                             |
  | Konstruktor pozwala na inicjalizacje prostokata z uzyciem wektorow.                                          |
  | Warunki wstepne:                                                                                             |
@@ -8,7 +23,7 @@
  |  CornerB - do poprawnego dzialania wektor musi byc poprawnie zainicjowany wartosciami wspolrzednych wektora. |
  |  CornerC - do poprawnego dzialania wektor musi byc poprawnie zainicjowany wartosciami wspolrzednych wektora. |
  |  CornerD - do poprawnego dzialania wektor musi byc poprawnie zainicjowany wartosciami wspolrzednych wektora. |
- | Warunki koncowe:                                                                                             |
+ | Warunki koncowe:                                                                                            |
  |   brak.                                                                                                      |   
  | Argumenty:                                                                                                   |
  |  CornerA - wektor opisujacy polozenie wierzcholka A.                                                         | 
@@ -39,7 +54,7 @@ Rectangle::Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector Corn
  */
 const Vector & Rectangle::operator [] (int index) const {
     if (index < 0 || index >= CORNERS) {
-        throw std::runtime_error("Bledna wartosc indeksu");
+        throw std::runtime_error("Bledna wartosc indeksu prostokata");
     } 
     return Corners[index];
 }

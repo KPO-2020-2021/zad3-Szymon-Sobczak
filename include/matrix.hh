@@ -9,7 +9,7 @@
 #include <cmath>
 
 /************************************************************************************
- |Klasa modelujaca w programie pojecie macierzy kwadratowej.                        |
+ | Klasa modelujaca w programie pojecie macierzy kwadratowej.                        |
  | Klasa posiada prywatne pole "_Matrix", stanowi zbior wartosci macierzy rotacji.  |
  |  Jest to tablica dwuwymiarowa dla warosci typu double.                           |
  | Klasa posiada publiczny interfejs pozwalajacy na wprowazdanie,                   |

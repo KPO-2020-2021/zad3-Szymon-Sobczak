@@ -58,17 +58,10 @@ Vector Matrix::operator * (Vector tmp) {
  |      Wartosc macierzy w danym miejscu tablicy.                             |
  */
 double & Matrix::operator()(unsigned int row, unsigned int column) {
-
-    if (row >= SIZE) {
-        throw std::runtime_error("Bledna wartosc indeksu");
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
-    }
-
-    if (column >= SIZE) {
-        throw std::runtime_error("Bledna wartosc indeksu");
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
-    }
-
+    if (row >= SIZE) 
+        throw std::runtime_error("Bledna wartosc indeksu macierzy");
+    if (column >= SIZE)
+        throw std::runtime_error("Bledna wartosc indeksu macierzy");
     return value[row][column];
 }
 
@@ -81,17 +74,12 @@ double & Matrix::operator()(unsigned int row, unsigned int column) {
  |  Zwraca:                                                                   |
  |      Wartosc macierzy w danym miejscu tablicy jako stala.                  |
  */
-const double &Matrix::operator () (unsigned int row, unsigned int column) const {
+const double & Matrix::operator ()(unsigned int row, unsigned int column) const {
+    if (row >= SIZE)
+        throw std::runtime_error("Bledna wartosc indeksu macierzy");
 
-    if (row >= SIZE) {
-        throw std::runtime_error("Bledna wartosc indeksu");
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
-    }
-
-    if (column >= SIZE) {
-        throw std::runtime_error("Bledna wartosc indeksu");
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
-    }
+    if (column >= SIZE) 
+        throw std::runtime_error("Bledna wartosc indeksu macierzy");
 
     return value[row][column];
 }
@@ -120,15 +108,16 @@ Matrix Matrix::operator + (Matrix tmp) {
  |      in - strumien wyjsciowy,                                              |
  |      mat - macierz.                                                        |
  */
-std::istream &operator>>(std::istream &in, Matrix &mat) {
+std::istream & operator>>(std::istream &in, Matrix &mat) {
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
             in >> mat(i, j);
         }
     }
+    if (in.fail())
+        throw std::runtime_error(":/ Podano wartosc nie bedaca typu double ");
     return in;
 }
-
 
 /******************************************************************************
  |  Przeciazenie operatora <<                                                 |
@@ -136,7 +125,8 @@ std::istream &operator>>(std::istream &in, Matrix &mat) {
  |      out - strumien wejsciowy,                                             |
  |      mat - macierz.                                                        |
  */
-std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
+
+std::ostream & operator<<(std::ostream &out, const Matrix &mat) {
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
             out << "| " << mat(i, j) << " | "; //warto ustalic szerokosc wyswietlania dokladnosci liczb

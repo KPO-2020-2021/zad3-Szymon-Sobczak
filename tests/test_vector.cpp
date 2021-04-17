@@ -49,8 +49,7 @@ TEST_CASE("Test wyswietlenia wartosci wektora z uzyciem przeciazenia << "){
 }
 
 TEST_CASE("Test wczytywania wartosci do wektora z uzyciem przeciazenia >> "){
-    double values[]={1,2};
-    Vector Vec(values);
+    Vector Vec;
     std::istringstream input("1 2");
     input >> Vec;
     CHECK ((Vec[0]==1 && Vec[1]==2));  
@@ -68,4 +67,25 @@ TEST_CASE("Test dodawania dwoch wektorow przy pomocy przeciazenia operatora + ")
     Vector Vec1(values1),Vec2(values2);
     Vec1=Vec1+Vec2;
     CHECK ((Vec1[0]==7 && Vec1[1]==10));  
+}
+
+TEST_CASE("Test odejmowania dwoch wektorow przy pomocy przeciazenia operatora - "){
+    double values1[]={1,2},values2[]={6,8};
+    Vector Vec1(values1),Vec2(values2);
+    Vec1=Vec1-Vec2;
+    CHECK ((Vec1[0]==-5 && Vec1[1]==-6));  
+}
+
+TEST_CASE("Test mnozenia wektora i liczby typu double przy pomocy przeciazenia operatora * "){
+    double values1[]={1,2};
+    Vector Vec1(values1);
+    Vec1=Vec1*2;
+    CHECK ((Vec1[0]==2 && Vec1[1]==4));  
+}
+
+TEST_CASE("Test dzielenia wektora i liczby typu double przy pomocy przeciazenia operatora / "){
+    double values1[]={1,2};
+    Vector Vec1(values1);
+    Vec1=Vec1/2;
+    CHECK ((Vec1[0]==0.5 && Vec1[1]==1));  
 }

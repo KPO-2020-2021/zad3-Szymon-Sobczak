@@ -23,13 +23,13 @@ class Rectangle {
     private:  
         Vector Corners[4];
     public:   
-        Rectangle() = default;
+        Rectangle();
         Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD);
         const Vector & operator [] (int index) const;
         Vector & operator [] (int index);
         Rectangle Translate_rec(Vector const vector);
         Rectangle Rotate_rec(int const multiplier, double const angle);
-       // bool Collision_detection(Rectangle Rec2);
+        //bool Collision_detection(Rectangle Rec2);
         void Is_it_rec();
         void Write_rec_to_file(const char *sNazwaPliku) const;
 };

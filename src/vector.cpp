@@ -106,7 +106,7 @@ Vector::Vector(double tmp[SIZE]) {
  */
 const double & Vector::operator [] (int index) const {
     if (index < 0 || index >= SIZE) {
-        throw std::runtime_error("Bledna wartosc indeksu");
+        throw std::runtime_error("Bledna wartosc indeksu wektora");
     } 
     return size[index];
 }
