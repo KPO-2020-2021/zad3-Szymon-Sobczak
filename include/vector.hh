@@ -10,17 +10,17 @@
 
 /****************************************************************************************
  | Klasa modelujaca w programie pojecie wektora.                                        |
- | Klasa posiada prywatne pole bedace tablica- zbiorem wspolrzednych wekotra "_Coord".  |
+ | Klasa posiada prywatne pole bedace tablica- zbiorem wspolrzednych wekotra "size".    |
  | Klasa posiada publiczny interfejs pozwalajacy na wprowazdanie, zmiane i odczytywanie |
  |   danych o wspolrzednych wektora.                                                    |
  | Klasa zawiera publiczne przeciazenia operatorow indeksujacych opowiedzialnych za     |
- |   wprowadzanie i odczytywanie wspolrzendych wektora.                                 |
- | oraz przeciazenie operatora dodawania dwoch wektorow.                                |
+ |   wprowadzanie i odczytywanie wspolrzendych wektora oraz przeciazenie operatora      |
+ |   dodawania, odejmowania, mnozenia, dzielenia dwoch wektorow.                        |
  */
 
 class Vector {
 private:
-    double size[SIZE];     //Tablica wektora
+    double size[SIZE];   //Tablica wektora
 public:
     Vector();
     Vector(double [SIZE]);

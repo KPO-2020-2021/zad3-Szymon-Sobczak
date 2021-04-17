@@ -28,10 +28,16 @@ TEST_CASE("Test wpraowadzania wartosci do wektora z uzyciem operatora indeksowan
     CHECK((Vec[0]==7 && Vec[1]==15));
 }
 
-TEST_CASE("Test operatora indeksowania - bledna wartosc indeksu "){
+TEST_CASE("Test operatora indeksowania - bledna wartosc indeksu podana przy odczytywaniu wartosci z wektora "){
     double values[]={1,2};
     Vector Vec(values);
     WARN_THROWS (Vec[-8]);
+}
+
+TEST_CASE("Test operatora indeksowania - bledna wartosc indeksu podana przy przypisywaniu wartosci do wektora "){
+    double values[]={1,2};
+    Vector Vec(values);
+    WARN_THROWS (Vec[-8]=5);
 }
 
 TEST_CASE("Test wyswietlenia wartosci wektora z uzyciem przeciazenia << "){
@@ -48,4 +54,18 @@ TEST_CASE("Test wczytywania wartosci do wektora z uzyciem przeciazenia >> "){
     std::istringstream input("1 2");
     input >> Vec;
     CHECK ((Vec[0]==1 && Vec[1]==2));  
+}
+
+TEST_CASE("Test reakcji na wczytywanie wartosci nie bedacej typu double do wektora z uzyciem przeciazenia >> "){
+    double values[]={1,2};
+    Vector Vec(values);
+    std::istringstream input("Z %");
+    WARN_THROWS (input >> Vec);
+}
+
+TEST_CASE("Test dodawania dwoch wektorow przy pomocy przeciazenia operatora + "){
+    double values1[]={1,2},values2[]={6,8};
+    Vector Vec1(values1),Vec2(values2);
+    Vec1=Vec1+Vec2;
+    CHECK ((Vec1[0]==7 && Vec1[1]==10));  
 }

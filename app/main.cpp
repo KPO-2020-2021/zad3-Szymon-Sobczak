@@ -59,12 +59,12 @@ int main() {
         Link.Rysuj();
         std::cout << "Poczatkowe wspolrzedne prostokata: " << std::endl;
         Rec.Is_it_rec();
-        std::cout << "menu:" << std::endl
-                  << "o - obrot prostokata o zadany kat " << std::endl
-                  << "p - przesuniecie prostokata o zadany wektor " << std::endl
-                  << "w - wyswietlenie wspolrzednych wierzcholkow " << std::endl
-                  << "m - wyswietl menu" << std::endl
-                  << "k - koniec dzialania programu" << std::endl;
+        std::cout << "Menu wyboru opcji:" << std::endl
+                  << "\to - obrot prostokata o zadany kat " << std::endl
+                  << "\tp - przesuniecie prostokata o zadany wektor " << std::endl
+                  << "\tw - wyswietlenie wspolrzednych wierzcholkow " << std::endl
+                  << "\tm - wyswietl menu" << std::endl
+                  << "\tk - koniec dzialania programu" << std::endl;
         while (Option != 'k')
         {   
             std::cout << "Twoj wybor? (m - menu) > ";
@@ -115,10 +115,6 @@ int main() {
                 case 'p':
                     std::cout << "Wprowadz wspolrzedne wektora translacji w postaci liczb x i y > ";
                     std::cin >> T_vector;
-                    if(std::cin.fail()){
-                        throw std::runtime_error("Podano wyrazenie nie bedace typu double");
-                        break;
-                    }
                     std::cout << "Czy translacja ma byc animowana? T/N? > ";
                     std::cin >> Option;
                     switch(Option){
@@ -153,12 +149,12 @@ int main() {
                 break;
 
                 case 'm':
-                     std::cout << "menu:" << std::endl
-                               << "o - obrot prostokata o zadany kat " << std::endl
-                               << "p - przesuniecie prostokata o zadany wektor " << std::endl
-                               << "w - wyswietlenie wspolrzednych wierzcholkow " << std::endl
-                               << "m - wyswietl menu" << std::endl
-                               << "k - koniec dzialania programu" << std::endl;
+                     std::cout << "Menu wyboru opcji:" << std::endl
+                               << "\to - obrot prostokata o zadany kat " << std::endl
+                               << "\tp - przesuniecie prostokata o zadany wektor " << std::endl
+                               << "\tw - wyswietlenie wspolrzednych wierzcholkow " << std::endl
+                               << "\tm - wyswietl menu" << std::endl
+                               << "\tk - koniec dzialania programu" << std::endl;
                 break;
 
                 case 'k':
@@ -171,7 +167,7 @@ int main() {
         }
     }
     catch (std::runtime_error & e){
-    std::cout << "Wystapil blad!"<< std::endl << e.what() << std::endl;
+    std::cout << ":O Wystapil blad!"<< std::endl << e.what() << std::endl;
     exit(1);
     }
     return 0;

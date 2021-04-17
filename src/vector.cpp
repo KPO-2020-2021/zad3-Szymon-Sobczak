@@ -17,7 +17,6 @@ Vector Vector::operator + (const Vector &v) {
     return result;
 }
 
-
 /******************************************************************************
  |  Realizuje odejmowanie dwoch wektorow.                                     |
  |  Argumenty:                                                                |
@@ -34,7 +33,6 @@ Vector Vector::operator - (const Vector &v) {
     }
     return result;
 }
-
 
 /******************************************************************************
  |  Realizuje mnozenie wektora przez liczbe zmiennoprzecinkowa.               |
@@ -54,7 +52,6 @@ Vector Vector::operator * (const double &tmp) {
     return result;
 }
 
-
 /******************************************************************************
  |  Realizuje dzielenie dwoch wektorow.                                       |
  |  Argumenty:                                                                |
@@ -72,6 +69,7 @@ Vector Vector::operator / (const double &tmp) {
     }
     return result;
 }
+
 /******************************************************************************
  |  Konstruktor klasy Vector.                                                 |
  |  Argumenty:                                                                |
@@ -84,7 +82,6 @@ Vector::Vector() {
         size[i] = 0;
     }
 }
-
 
 /******************************************************************************
  |  Konstruktor klasy Vector.                                                 |
@@ -125,20 +122,18 @@ double & Vector::operator[](int index) {
     return const_cast <double &> (const_cast <const Vector *> (this)->operator[](index));
 }
 
-
 /******************************************************************************
  |  Przeciazenie operatora <<                                                 |
  |  Argumenty:                                                                |
  |      out - strumien wejsciowy,                                             |
  |      tmp - wektor.                                                         |
  */
-std::ostream &operator << (std::ostream &out, Vector const &tmp) {
+std::ostream & operator << (std::ostream &out, Vector const &tmp) {
     for (int i = 0; i < SIZE; ++i) {
         out << std::fixed << std::setprecision(10) << tmp[i]<< "\t";
     }
     return out;
 }
-
 
 /******************************************************************************
  |  Przeciazenie operatora >>                                                 |
@@ -150,6 +145,8 @@ std::istream & operator >> (std::istream &in, Vector &tmp) {
     for (int i = 0; i < SIZE; ++i) {
         in >> tmp[i];
     }
+    if (in.fail())
+        throw std::runtime_error(":/ Podano wartosc nie bedaca typu double ");
     std::cout << std::endl;
     return in;
 }
