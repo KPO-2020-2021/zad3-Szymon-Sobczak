@@ -21,20 +21,19 @@
 
 class Rectangle {
     private:  
-        Vector Corners[4];
+        Vector Corners[CORNERS]; /* Wartosci wektorow reprezentujace wierzcholki prostokata */
     public:   
-        Rectangle();
-        Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD);
-        const Vector & operator [] (int index) const;
+        Rectangle();                                                               /* Bezparametryczny konstuktor klasy */
+        Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD); /* Wieloparametrowy konstuktor klasy */
+        const Vector & operator [] (int index) const;                   /* Przeciazenia operatora indeksujacego */
         Vector & operator [] (int index);
-        Rectangle Translate_rec(Vector const vector);
-        Rectangle Rotate_rec(int const multiplier, double const angle);
-        //bool Collision_detection(Rectangle Rec2);
-        void Is_it_rec();
-        void Write_rec_to_file(const char *sNazwaPliku) const;
+        Rectangle Translate_rec(Vector const vector);                   /* Translacja prostokata prostokata o zadany wektor */
+        Rectangle Rotate_rec(int const multiplier, double const angle); /* Obrot prostokata o zadany kat, zadana ilosc razy */
+        void Is_it_rec();                                               /* Sprawdzenie czy dany prostokat ma rowne przeciwlegle boki */
+        void Write_rec_to_file(const char *sNazwaPliku) const;          /* Zapis wartosci wspolrzendych wierzcholkow do pliku */
 };
 
-std::ostream & operator << (std::ostream & Strm, const Rectangle & Rc);
-std::istream & operator >> (std::ostream & Strm, Rectangle & Rc);
+std::ostream & operator << (std::ostream & Strm, const Rectangle & Rc); /* Przeciazenie operatora >> sluzace wyswietlaniu wartosci prostokata */           
+std::istream & operator >> (std::ostream & Strm, Rectangle & Rc);       /* Przeciazenie operatora << sluzace wczytywaniu wartosci do prostokata */
 
 #endif

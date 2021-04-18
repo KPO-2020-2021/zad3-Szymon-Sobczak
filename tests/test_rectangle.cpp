@@ -7,7 +7,6 @@ TEST_CASE("Test konstrukora bezparametrowego dla klasy rectangle"){
           Example[2][0]==0 && Example[2][1]==0 && Example[3][0]==0 && Example[3][1]==0));
 }
 
-
 TEST_CASE("Test konstruktora wieloparametrowego dla klasy rectangle"){
     double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4};
     Vector A(X),B(Y),C(Z),D(U);
@@ -85,7 +84,6 @@ TEST_CASE("Test dzialania metody przesunieca prostokata o zadany wektor"){
            Example[2][0]==9 && Example[2][1]==6 && Example[3][0]==4 && Example[3][1]==6));
 }
 
-
 TEST_CASE("Test dzialania metody obrotu prostokata o zadany kat, wybrana ilosc razy "){
     double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4}, angle= 90, mulitpier = 3;
     Vector A(X),B(Y),C(Z),D(U);
@@ -93,12 +91,12 @@ TEST_CASE("Test dzialania metody obrotu prostokata o zadany kat, wybrana ilosc r
     double values[]={1,2};
     Vector Vec(values);
     Example.Rotate_rec(mulitpier,angle);
-    CHECK((Example[0][0]>1-LENGTH_DIFF && Example[0][0]<1+LENGTH_DIFF &&
-            Example[0][1]>-3-LENGTH_DIFF && Example[0][1]<-3+LENGTH_DIFF &&
-            Example[1][0]>1-LENGTH_DIFF && Example[1][0]<1+LENGTH_DIFF &&
-            Example[1][1]>-8-LENGTH_DIFF && Example[1][1]<-8+LENGTH_DIFF &&
-            Example[2][0]>4-LENGTH_DIFF && Example[2][0]<4+LENGTH_DIFF &&
-            Example[2][1]>-8-LENGTH_DIFF && Example[2][1]<-8+LENGTH_DIFF &&
-            Example[3][0]>4-LENGTH_DIFF && Example[3][0]<4+LENGTH_DIFF &&
-            Example[3][1]>-3-LENGTH_DIFF && Example[3][1]<-3+LENGTH_DIFF));
+    CHECK((Example[0][0]>1-MAX_VALUE_DIFF && Example[0][0]<1+MAX_VALUE_DIFF &&
+            Example[0][1]>-3-MAX_VALUE_DIFF && Example[0][1]<-3+MAX_VALUE_DIFF &&
+            Example[1][0]>1-MAX_VALUE_DIFF && Example[1][0]<1+MAX_VALUE_DIFF &&
+            Example[1][1]>-8-MAX_VALUE_DIFF && Example[1][1]<-8+MAX_VALUE_DIFF &&
+            Example[2][0]>4-MAX_VALUE_DIFF && Example[2][0]<4+MAX_VALUE_DIFF &&
+            Example[2][1]>-8-MAX_VALUE_DIFF && Example[2][1]<-8+MAX_VALUE_DIFF &&
+            Example[3][0]>4-MAX_VALUE_DIFF && Example[3][0]<4+MAX_VALUE_DIFF &&
+            Example[3][1]>-3-MAX_VALUE_DIFF && Example[3][1]<-3+MAX_VALUE_DIFF));
 }

@@ -20,19 +20,19 @@
 
 class Vector {
 private:
-    double size[SIZE];   //Tablica wektora
+    double size[SIZE];   /* Tablica wektora */
 public:
-    Vector();
-    Vector(double [SIZE]);
-    Vector operator + (const Vector &v);
-    Vector operator - (const Vector &v);
-    Vector operator * (const double &tmp);
-    Vector operator / (const double &tmp);
-    const double & operator [] (int index) const;
+    Vector(); /* Bezparametryczny konstruktor klasy */
+    Vector(double [SIZE]); /* Konstruktor klasy z parametrem */
+    Vector operator + (const Vector &v);    /* operator dodawania dwoch wektorow */
+    Vector operator - (const Vector &v);    /* operator odejmowania dwoch wektorow */
+    Vector operator * (const double &tmp);  /* operator mnozenia wektora i liczby typu double */
+    Vector operator / (const double &tmp);  /* operator dzielenia wektora i liczby typu double */
+    const double & operator [] (int index) const; /* Przeciazenia operatora indeksujacego */
     double & operator [] (int index);
 };
 
-std::ostream & operator << (std::ostream &out, Vector const &tmp);
-std::istream & operator >> (std::istream &in, Vector &tmp);
+std::ostream & operator << (std::ostream &out, Vector const &tmp); /* Przeciazenie operatora >> sluzace wyswietlaniu wektora */ 
+std::istream & operator >> (std::istream &in, Vector &tmp); /* Przeciazenie operatora << sluzace wczytywaniu wartosci do wektora */
 
 #endif

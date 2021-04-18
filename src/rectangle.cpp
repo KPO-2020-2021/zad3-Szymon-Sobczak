@@ -1,10 +1,10 @@
 #include "rectangle.hh"
 
 /****************************************************************************************************************
- | domyślny konstruktor obiektu typu Rectangle.                                                                 |
+ | Domyślny konstruktor obiektu typu Rectangle.                                                                 |
  | Konstruktor pozwala na inicjalizacje prostokata z uzyciem wektorow.                                          | 
  | Argumenty:                                                                                                   |
- |  break.                                                                                                      | 
+ |  brak.                                                                                                       | 
  | Zwraca:                                                                                                      |
  |  Prostokat o wierzcholakach zainicjowanych wartosciami werkotrow zerowych.                                   |
  */
@@ -14,7 +14,6 @@ Rectangle::Rectangle(){
         Corners[i] = Vector();    
 }
 
-
 /****************************************************************************************************************
  | Alternatywny konstruktor obiektu typu Rectangle.                                                             |
  | Konstruktor pozwala na inicjalizacje prostokata z uzyciem wektorow.                                          |
@@ -23,7 +22,7 @@ Rectangle::Rectangle(){
  |  CornerB - do poprawnego dzialania wektor musi byc poprawnie zainicjowany wartosciami wspolrzednych wektora. |
  |  CornerC - do poprawnego dzialania wektor musi byc poprawnie zainicjowany wartosciami wspolrzednych wektora. |
  |  CornerD - do poprawnego dzialania wektor musi byc poprawnie zainicjowany wartosciami wspolrzednych wektora. |
- | Warunki koncowe:                                                                                            |
+ | Warunki koncowe:                                                                                             |
  |   brak.                                                                                                      |   
  | Argumenty:                                                                                                   |
  |  CornerA - wektor opisujacy polozenie wierzcholka A.                                                         | 
@@ -81,7 +80,6 @@ Vector & Rectangle::operator[](int index) {
  | Zwraca:                                                                                                       |
  |   Prostokat o zmienionym polozeniu za sprawa operacji translacji o wektor.                                    |
  */
-
 Rectangle Rectangle::Translate_rec(Vector const vector){
     for (int i=0; i<4; i++){
         this->Corners[i] =this->Corners[i] + vector;
@@ -93,16 +91,15 @@ Rectangle Rectangle::Translate_rec(Vector const vector){
  | Metoda klasy Rectangle realizaujca dzialanie obrotu prostokata o wybrany kat, wybrana ilosc razy. |   
  | Warunki wstepne:                                                                                  |
  |   multiplier - wartosc musi miesicic sie w zakresie wlasciwym int.                                |
- |   angle - wartosc musi byc typu                                                                   |
+ |   angle - wartosc musi byc typu double                                                            |
  | Warunki koncowe:                                                                                  |
  |   brak.                                                                                           |
  | Argumenty:                                                                                        |
- |   multiplier - wartosc musi miesicic sie w zakresie wlasciwym int.                                |
- |   angle - wartosc musi byc typu                                                                   |
+ |   multiplier - ile razy ma zostac wykonany obrot                                                  |
+ |   angle - kat o jaki ma zostac obrocony prostokat                                                 |
  | Zwraca:                                                                                           |
  |  Prostokat o zmienionym polozeniu za sprawa operacji obrotu.                                      |
  */
-
 Rectangle Rectangle::Rotate_rec(int const multiplier, double const angle){
     Matrix mtx; 
     mtx.Fill_matrix(angle);
@@ -127,11 +124,10 @@ Rectangle Rectangle::Rotate_rec(int const multiplier, double const angle){
  | Zwraca:                                                                                                           |
  |   Wypisane wspolrzende wksazanego prostokata, w odpowiedniej formie na wskazane wyjscie.                          |
  */
-
-std::ostream & operator << (std::ostream & Strm, const Rectangle & Rc){
+std::ostream & operator << (std::ostream & Out, const Rectangle & Rc){
     for (int i=0; i<4;i++)
-        Strm << Rc[i] << std::endl;
-    return Strm;
+        Out << Rc[i] << std::endl;
+    return Out;
 }
 
 /***********************************************************************************************************************
@@ -148,28 +144,27 @@ std::ostream & operator << (std::ostream & Strm, const Rectangle & Rc){
  | Zwraca:                                                                                                              |
  |   Wczytany obiekt- prostokat.                                                                                        |
  */
-
-std::istream & operator >> (std::istream & Strm,Rectangle & Rc){
+std::istream & operator >> (std::istream & In,Rectangle & Rc){
     for (int i=0; i<CORNERS;i++){
-        Strm >> Rc[i];
+        In >> Rc[i];
     }
-    return Strm;
+    return In;
 }
 
 /***********************************************************************************************************************
- | Funkcja wykonujaca operacje przeciazenia operatora >>.                                                              |
- | Funkcja sluzy do wprowadzania wartosci wspolrzednych wierzcholkow prostokata ze wskazanego strumienia wejsciowego.  | 
+ | Metoda klasy Rectangle realizujaca zapis wartosci wspolrzednych wierzcholkow do pliku.                              | 
  | Warunki wstepne:                                                                                                    |
+ |   this - Do poprawnego dzialania prostokat musi byc zainicjowany wartosciami wzpolrzednych weirzcholkow             |
  |   *sNazwaPliku - do poprawnego dzialania wybrany napis stanowiacy nazwe musi być zgodny z nazwa                     |
  |   pliku wskazanego programowi GNUplot.                                                                              |
  | Warunki koncowe:                                                                                                    |
  |   brak;                                                                                                             |
  | Argumenty:                                                                                                          |
+ |    this - prostokat do zapisu.                                                                                      |
  |   *sNazwaPliku - wskaznik na napis stanowiacy nazwe pliku wyjsciowego.                                              |
  | Zwraca:                                                                                                             |
  |   brak.                                                                                                             |
  */
-
 void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
   std::ofstream  StrmPlikowy;
   StrmPlikowy.open(sNazwaPliku);
@@ -181,6 +176,19 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
   StrmPlikowy.close();
 }
 
+/************************************************************************************************************************
+ | Metoda klasy Rectangle wykonujaca operacje wyznaczenia dlugosic bokow prostokata i sprawdzenia,                      |
+ |   czy przeciwlegle boki sa sobie rowne.                                                                              |
+ | Warunki wstepne:                                                                                                     |
+ |   this - Do poprawnego dzialania prostokat musi byc zainicjowany wartosciami reprezentujacym wzpolrzedne weirzcholkow|
+ | Warunki koncowe:                                                                                                     |
+ |   brak;                                                                                                              |
+ | Argumenty:                                                                                                           |
+ |   this - prostokat, ktory ma zostac poddany sprawdzeniu.                                                             |
+ | Zwraca:                                                                                                              |
+ |   Wypisuje na standardowe wyjscie dane o bokach prostokata.                                                          |
+ */
+
 void Rectangle::Is_it_rec(){
     double a,b,c,d;
     a = sqrt(pow(this->Corners[1][0]-this->Corners[0][0],2)+pow(this->Corners[1][1]-this->Corners[0][1],2)); 
@@ -188,7 +196,7 @@ void Rectangle::Is_it_rec(){
     c = sqrt(pow(this->Corners[3][0]-this->Corners[2][0],2)+pow(this->Corners[3][1]-this->Corners[2][1],2));
     d = sqrt(pow(this->Corners[0][0]-this->Corners[3][0],2)+pow(this->Corners[0][1]-this->Corners[3][1],2));
     std::cout << std::endl;
-    if(a-c < LENGTH_DIFF && c-a < LENGTH_DIFF){
+    if(a-c < MAX_VALUE_DIFF && c-a < MAX_VALUE_DIFF){
         if(a >= b && a >= d && c >= b && c >= d)
             std::cout << ":) Dluzsze przeciwlegle boki sa sobie rowne" << std::endl;
         else
@@ -204,7 +212,7 @@ void Rectangle::Is_it_rec(){
     std::cout << "Dlugosc drugiego boku: " << std::fixed << std::setprecision(10) << c << std::endl;
     std::cout << std::endl;
     
-    if(b-d < LENGTH_DIFF && d-b < LENGTH_DIFF){
+    if(b-d < MAX_VALUE_DIFF && d-b < MAX_VALUE_DIFF){
         if(b >= a && b >= c && d >= a && d >= c)
             std::cout << ":) Dluzsze rzeciwlegle boki sa sobie rowne "<< std::endl;
         else

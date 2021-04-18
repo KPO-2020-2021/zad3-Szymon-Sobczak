@@ -22,9 +22,9 @@ Matrix::Matrix() {
  |  Zwraca:                                                                   |
  |      Macierz wypelniona wartosciami podanymi w argumencie.                 |
  */
-Matrix::Matrix(double tmp[SIZE][SIZE]) {
+Matrix::Matrix(double tmp[SIZE][SIZE]){
     for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+        for (int j = 0; j < SIZE; ++j){
             value[i][j] = tmp[i][j];
         }
     }
@@ -41,8 +41,8 @@ Matrix::Matrix(double tmp[SIZE][SIZE]) {
 
 Vector Matrix::operator * (Vector tmp) {
     Vector result;
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+    for (int i = 0; i < SIZE; ++i){
+        for (int j = 0; j < SIZE; ++j){
             result[i] += value[i][j] * tmp[j];
         }
     }
@@ -125,7 +125,6 @@ std::istream & operator>>(std::istream &in, Matrix &mat) {
  |      out - strumien wejsciowy,                                             |
  |      mat - macierz.                                                        |
  */
-
 std::ostream & operator<<(std::ostream &out, const Matrix &mat) {
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
@@ -145,7 +144,6 @@ std::ostream & operator<<(std::ostream &out, const Matrix &mat) {
  |  Zwraca:                                                                   |
  |      Poprawnie zainizalinzowana wartoscami macierz typu Matrix.            |
  */
-
 Matrix Matrix::Fill_matrix(double angle){
     double angle_radians = angle * M_PI / 180.0;
     this->value[0][0] = cos(angle_radians);

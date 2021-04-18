@@ -20,9 +20,9 @@ TEST_CASE("Test wczytywania do oraz odczytywania wartosci macierzy z uzyciem ope
 TEST_CASE("Test metody klasy Matrix wypelnijacej ja odpowiednimi wartosciami funkcji tryg. dla podanego w stopniach kata"){
     Matrix Example;
     Example.Fill_matrix(90);
-    CHECK((Example(0,0)>-LENGTH_DIFF &&  Example(0,0) < LENGTH_DIFF && Example(0,1)>-1-LENGTH_DIFF 
-          &&  Example(0,1) < -1 + LENGTH_DIFF  && Example(1,0)>1-LENGTH_DIFF &&  Example(1,0) < 1 + LENGTH_DIFF 
-          && Example(1,1)>-LENGTH_DIFF &&  Example(1,1) < LENGTH_DIFF));
+    CHECK((Example(0,0)>-MAX_VALUE_DIFF &&  Example(0,0) < MAX_VALUE_DIFF && Example(0,1)>-1-MAX_VALUE_DIFF 
+          &&  Example(0,1) < -1 + MAX_VALUE_DIFF  && Example(1,0)>1-MAX_VALUE_DIFF &&  Example(1,0) < 1 + MAX_VALUE_DIFF 
+          && Example(1,1)>-MAX_VALUE_DIFF &&  Example(1,1) < MAX_VALUE_DIFF));
 }
 
 TEST_CASE("Test wyswietlenia wartosci macierzy z uzyciem przeciazenia << "){

@@ -17,7 +17,8 @@ project(CPP_BOILERPLATE VERSION 1.2.3.4 LANGUAGES CXX)
 option(ENABLE_WARNINGS_SETTINGS "Allow target_set_warnings to add flags and defines.
                                  Set this to OFF if you want to provide your own warning parameters." ON)
 option(ENABLE_LTO "Enable link time optimization" ON)
-option(ENABLE_DOCTESTS "Include tests in the library. Setting this to OFF will remove all doctest related code.
+option(ENABLE_DOCTESTS "Include tests in the library. Setting this to OFF will remove all do
+est related code.
                         Tests in tests/*.cpp will still be enabled." ON)
 
 # Include stuff. No change needed.
