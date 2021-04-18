@@ -20,9 +20,9 @@
 
 class Vector {
 private:
-    double size[SIZE];   /* Tablica wektora */
+    double size[SIZE];     /* Tablica wartosci wektora */
 public:
-    Vector(); /* Bezparametryczny konstruktor klasy */
+    Vector();              /* Bezparametryczny konstruktor klasy */
     Vector(double [SIZE]); /* Konstruktor klasy z parametrem */
     Vector operator + (const Vector &v);    /* operator dodawania dwoch wektorow */
     Vector operator - (const Vector &v);    /* operator odejmowania dwoch wektorow */
@@ -33,6 +33,6 @@ public:
 };
 
 std::ostream & operator << (std::ostream &out, Vector const &tmp); /* Przeciazenie operatora >> sluzace wyswietlaniu wektora */ 
-std::istream & operator >> (std::istream &in, Vector &tmp); /* Przeciazenie operatora << sluzace wczytywaniu wartosci do wektora */
+std::istream & operator >> (std::istream &in, Vector &tmp);        /* Przeciazenie operatora << sluzace wczytywaniu wartosci do wektora */
 
 #endif

@@ -151,19 +151,19 @@ std::istream & operator >> (std::istream & In,Rectangle & Rc){
     return In;
 }
 
-/***********************************************************************************************************************
- | Metoda klasy Rectangle realizujaca zapis wartosci wspolrzednych wierzcholkow do pliku.                              | 
- | Warunki wstepne:                                                                                                    |
- |   this - Do poprawnego dzialania prostokat musi byc zainicjowany wartosciami wzpolrzednych weirzcholkow             |
- |   *sNazwaPliku - do poprawnego dzialania wybrany napis stanowiacy nazwe musi być zgodny z nazwa                     |
- |   pliku wskazanego programowi GNUplot.                                                                              |
- | Warunki koncowe:                                                                                                    |
- |   brak;                                                                                                             |
- | Argumenty:                                                                                                          |
- |    this - prostokat do zapisu.                                                                                      |
- |   *sNazwaPliku - wskaznik na napis stanowiacy nazwe pliku wyjsciowego.                                              |
- | Zwraca:                                                                                                             |
- |   brak.                                                                                                             |
+/************************************************************************************************************
+ | Metoda klasy Rectangle realizujaca zapis wartosci wspolrzednych wierzcholkow do pliku.                   | 
+ | Warunki wstepne:                                                                                         |
+ |   this - Do poprawnego dzialania prostokat musi byc zainicjowany wartosciami wzpolrzednych weirzcholkow  |
+ |   *sNazwaPliku - do poprawnego dzialania wybrany napis stanowiacy nazwe musi być zgodny z nazwa          |
+ |   pliku wskazanego programowi GNUplot.                                                                   |
+ | Warunki koncowe:                                                                                         |
+ |   brak;                                                                                                  |
+ | Argumenty:                                                                                               |
+ |    this - prostokat do zapisu.                                                                           |
+ |   *sNazwaPliku - wskaznik na napis stanowiacy nazwe pliku wyjsciowego.                                   |
+ | Zwraca:                                                                                                  |
+ |   brak.                                                                                                  |
  */
 void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
   std::ofstream  StrmPlikowy;
@@ -176,17 +176,18 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
   StrmPlikowy.close();
 }
 
-/************************************************************************************************************************
- | Metoda klasy Rectangle wykonujaca operacje wyznaczenia dlugosic bokow prostokata i sprawdzenia,                      |
- |   czy przeciwlegle boki sa sobie rowne.                                                                              |
- | Warunki wstepne:                                                                                                     |
- |   this - Do poprawnego dzialania prostokat musi byc zainicjowany wartosciami reprezentujacym wzpolrzedne weirzcholkow|
- | Warunki koncowe:                                                                                                     |
- |   brak;                                                                                                              |
- | Argumenty:                                                                                                           |
- |   this - prostokat, ktory ma zostac poddany sprawdzeniu.                                                             |
- | Zwraca:                                                                                                              |
- |   Wypisuje na standardowe wyjscie dane o bokach prostokata.                                                          |
+/***************************************************************************************************
+ | Metoda klasy Rectangle wykonujaca operacje wyznaczenia dlugosic bokow prostokata i sprawdzenia, |
+ |   czy przeciwlegle boki sa sobie rowne.                                                         |
+ | Warunki wstepne:                                                                                |
+ |   this - Do poprawnego dzialania prostokat musi byc zainicjowany wartosciami                    |
+ |          reprezentujacym wzpolrzedne weirzcholkow                                               |
+ | Warunki koncowe:                                                                                |
+ |   brak;                                                                                         |
+ | Argumenty:                                                                                      |
+ |   this - prostokat, ktory ma zostac poddany sprawdzeniu.                                        |
+ | Zwraca:                                                                                         |
+ |   Wypisuje na standardowe wyjscie dane o bokach prostokata.                                     |
  */
 
 void Rectangle::Is_it_rec(){
