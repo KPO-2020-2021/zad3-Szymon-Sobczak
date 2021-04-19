@@ -8,12 +8,11 @@
  | Zwraca:                                                                                                      |
  |  Prostokat o wierzcholakach zainicjowanych wartosciami werkotrow zerowych.                                   |
  */
-
 Rectangle::Rectangle(){
     for (int i=0;i<4;i++)
         Corners[i] = Vector();    
 }
-
+ 
 /****************************************************************************************************************
  | Alternatywny konstruktor obiektu typu Rectangle.                                                             |
  | Konstruktor pozwala na inicjalizacje prostokata z uzyciem wektorow.                                          |
@@ -32,7 +31,6 @@ Rectangle::Rectangle(){
  | Zwraca:                                                                                                      |
  |   Prostokat o wierzcholakach zainicjowanych wartosciami werkotrow.                                           |
  */
-
 Rectangle::Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD){
     Corners[0] = CornerA; 
     Corners[1] = CornerB;
@@ -189,16 +187,17 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
  | Zwraca:                                                                                         |
  |   Wypisuje na standardowe wyjscie dane o bokach prostokata.                                     |
  */
-
 void Rectangle::Is_it_rec(){
     double a,b,c,d;
-    a = sqrt(pow(this->Corners[1][0]-this->Corners[0][0],2)+pow(this->Corners[1][1]-this->Corners[0][1],2)); 
+    a = sqrt(pow(this->Corners[1][0]-this->Corners[0][0],2)+pow(this->Corners[1][1]-this->Corners[0][1],2)); /* Wyliczenie dlugosci bokow */
     b = sqrt(pow(this->Corners[2][0]-this->Corners[1][0],2)+pow(this->Corners[2][1]-this->Corners[1][1],2));
     c = sqrt(pow(this->Corners[3][0]-this->Corners[2][0],2)+pow(this->Corners[3][1]-this->Corners[2][1],2));
     d = sqrt(pow(this->Corners[0][0]-this->Corners[3][0],2)+pow(this->Corners[0][1]-this->Corners[3][1],2));
     std::cout << std::endl;
-    if(a-c < MAX_VALUE_DIFF && c-a < MAX_VALUE_DIFF){
-        if(a >= b && a >= d && c >= b && c >= d)
+    if(a-c < MAX_VALUE_DIFF && c-a < MAX_VALUE_DIFF){ /* Sprawdzenie spojnosci dlugosci przeciewleglych bokow */
+        if(a == b && a == d && c == b && c == d) /* Warunek generujacy komunikat, gdy badana figura to kwadrat */
+            std::cout << ":) Przeciwlegle boki kwadratu sa sobie rowne" << std::endl;
+        else if(a > b && a > d && c > b && c > d) /* Ustalenie, ktore boki prostokata sa dluzsze, a ktore krotsze */
             std::cout << ":) Dluzsze przeciwlegle boki sa sobie rowne" << std::endl;
         else
             std::cout << ":) Krotsze przeciwlegle boki sa sobie rowne" << std::endl;
@@ -209,12 +208,14 @@ void Rectangle::Is_it_rec(){
         else
             std::cout << ":O Krotsze przeciwlegle boki nie sa sobie rowne" << std::endl;
     }
-    std::cout << "Dlugosc pierwszego boku: " << std::fixed << std::setprecision(10) << a << std::endl;
+    std::cout << "Dlugosc pierwszego boku: " << std::fixed << std::setprecision(10) << a << std::endl; /* Wyswietlenie informacji o dl. bokow */
     std::cout << "Dlugosc drugiego boku: " << std::fixed << std::setprecision(10) << c << std::endl;
     std::cout << std::endl;
     
     if(b-d < MAX_VALUE_DIFF && d-b < MAX_VALUE_DIFF){
-        if(b >= a && b >= c && d >= a && d >= c)
+        if(a == b && a == d && c == b && c == d) 
+            std::cout << ":) Przeciwlegle boki kwadratu sa sobie rowne" << std::endl;
+        else if(b >= a && b >= c && d >= a && d >= c)
             std::cout << ":) Dluzsze rzeciwlegle boki sa sobie rowne "<< std::endl;
         else
             std::cout << ":) Krotsze rzeciwlegle boki sa sobie rowne" << std::endl;
@@ -229,4 +230,3 @@ void Rectangle::Is_it_rec(){
     std::cout << "Dlugosc drugiego boku: " << std::fixed << std::setprecision(10) << d << std::endl;
     std::cout << std::endl;
 }
-

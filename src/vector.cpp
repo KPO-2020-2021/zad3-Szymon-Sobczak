@@ -1,5 +1,32 @@
 #include "vector.hh"
 
+ /******************************************************************************
+ |  Konstruktor klasy Vector.                                                 |
+ |  Argumenty:                                                                |
+ |      Brak argumentow.                                                      |
+ |  Zwraca:                                                                   |
+ |      Tablice wypelniona wartoscia 0.                                       |
+ */
+Vector::Vector(){
+    for (int i = 0; i < SIZE; ++i){
+        size[i] = 0;
+    }
+}
+
+/******************************************************************************
+ |  Konstruktor klasy Vector.                                                 |
+ |  Argumenty:                                                                |
+ |      tmp - Jednowymiarowa tablica typu double.                             |
+ |  Zwraca:                                                                   |
+ |      Tablice wypelniona wartosciami podanymi w argumencie.                 |
+ */
+
+Vector::Vector(double tmp[SIZE]){
+    for (int i = 0; i < SIZE; ++i){
+        size[i] = tmp[i];
+    }
+}
+
 /******************************************************************************
  |  Realizuje dodawanie dwoch wektorow.                                       |
  |  Argumenty:                                                                |
@@ -9,9 +36,9 @@
  |      Sume dwoch skladnikow przekazanych jako wskaznik                      |
  |      na parametr.                                                          |
  */
-Vector Vector::operator + (const Vector &v) {
+Vector Vector::operator + (const Vector &v){
     Vector result;
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < SIZE; ++i){
         result[i] = size[i] += v[i];
     }
     return result;
@@ -26,7 +53,7 @@ Vector Vector::operator + (const Vector &v) {
  |      Roznice dwoch skladnikow przekazanych jako wskaznik                   |
  |      na parametr.                                                          |
  */
-Vector Vector::operator - (const Vector &v) {
+Vector Vector::operator - (const Vector &v){
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
         result[i] = size[i] -= v[i];
@@ -44,9 +71,9 @@ Vector Vector::operator - (const Vector &v) {
  |      na parametr.                                                          |
  */
 
-Vector Vector::operator * (const double &tmp) {
+Vector Vector::operator * (const double &tmp){
     Vector result;
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < SIZE; ++i){
         result[i] = size[i] *= tmp;
     }
     return result;
@@ -62,39 +89,12 @@ Vector Vector::operator * (const double &tmp) {
  |      na parametr.                                                          |
  */
 
-Vector Vector::operator / (const double &tmp) {
+Vector Vector::operator / (const double &tmp){
     Vector result;
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < SIZE; ++i){
         result[i] = size[i] / tmp;
     }
     return result;
-}
-
-/******************************************************************************
- |  Konstruktor klasy Vector.                                                 |
- |  Argumenty:                                                                |
- |      Brak argumentow.                                                      |
- |  Zwraca:                                                                   |
- |      Tablice wypelniona wartoscia 0.                                       |
- */
-Vector::Vector() {
-    for (int i = 0; i < SIZE; ++i) {
-        size[i] = 0;
-    }
-}
-
-/******************************************************************************
- |  Konstruktor klasy Vector.                                                 |
- |  Argumenty:                                                                |
- |      tmp - Jednowymiarowa tablica typu double.                             |
- |  Zwraca:                                                                   |
- |      Tablice wypelniona wartosciami podanymi w argumencie.                 |
- */
-
-Vector::Vector(double tmp[SIZE]) {
-    for (int i = 0; i < SIZE; ++i) {
-        size[i] = tmp[i];
-    }
 }
 
 /******************************************************************************
@@ -104,8 +104,8 @@ Vector::Vector(double tmp[SIZE]) {
  |  Zwraca:                                                                   |
  |      Wartosc wektora w danym miejscu tablicy jako stala.                   |
  */
-const double & Vector::operator [] (int index) const {
-    if (index < 0 || index >= SIZE) {
+const double & Vector::operator [] (int index) const{
+    if (index < 0 || index >= SIZE){
         throw std::runtime_error("Bledna wartosc indeksu wektora");
     } 
     return size[index];
@@ -118,7 +118,7 @@ const double & Vector::operator [] (int index) const {
  |  Zwraca:                                                                   |
  |      Wartosc wektora w danym miejscu tablicy.                              |
  */
-double & Vector::operator[](int index) {
+double & Vector::operator[](int index){
     return const_cast <double &> (const_cast <const Vector *> (this)->operator[](index));
 }
 
@@ -128,7 +128,7 @@ double & Vector::operator[](int index) {
  |      out - strumien wejsciowy,                                             |
  |      tmp - wektor.                                                         |
  */
-std::ostream & operator << (std::ostream &out, Vector const &tmp) {
+std::ostream & operator << (std::ostream &out, Vector const &tmp){
     for (int i = 0; i < SIZE; ++i) {
         out << std::fixed << std::setprecision(10) << tmp[i]<< "\t";
     }
@@ -141,8 +141,8 @@ std::ostream & operator << (std::ostream &out, Vector const &tmp) {
  |      in - strumien wyjsciowy,                                              |
  |      tmp - wektor.                                                         |
  */
-std::istream & operator >> (std::istream &in, Vector &tmp) {
-    for (int i = 0; i < SIZE; ++i) {
+std::istream & operator >> (std::istream &in, Vector &tmp){
+    for (int i = 0; i < SIZE; ++i){
         in >> tmp[i];
     }
     if (in.fail())

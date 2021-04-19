@@ -16,7 +16,7 @@ TEST_CASE("Test wczytywania do oraz odczytywania wartosci macierzy z uzyciem ope
     Matrix Example(values_M);
     CHECK((Example(0,0)==1 && Example(0,1)==2 && Example(1,0) ==3 && Example(1,1)==4));
 }
-
+ 
 TEST_CASE("Test metody klasy Matrix wypelnijacej ja odpowiednimi wartosciami funkcji tryg. dla podanego w stopniach kata"){
     Matrix Example;
     Example.Fill_matrix(90);

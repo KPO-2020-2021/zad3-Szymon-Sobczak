@@ -7,9 +7,9 @@
  |  Zwraca:                                                                   |
  |      Macierz wypelnione wartoscia 0.                                       |
  */
-Matrix::Matrix() {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+Matrix::Matrix(){
+    for (int i = 0; i < SIZE; ++i){
+        for (int j = 0; j < SIZE; ++j){
             value[i][j] = 0;
         }
     }
@@ -23,7 +23,7 @@ Matrix::Matrix() {
  |      Macierz wypelniona wartosciami podanymi w argumencie.                 |
  */
 Matrix::Matrix(double tmp[SIZE][SIZE]){
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < SIZE; ++i){
         for (int j = 0; j < SIZE; ++j){
             value[i][j] = tmp[i][j];
         }
@@ -39,7 +39,7 @@ Matrix::Matrix(double tmp[SIZE][SIZE]){
  |      Iloczyn dwoch skladnikow przekazanych jako wektor.                    |
  */
 
-Vector Matrix::operator * (Vector tmp) {
+Vector Matrix::operator * (Vector tmp){
     Vector result;
     for (int i = 0; i < SIZE; ++i){
         for (int j = 0; j < SIZE; ++j){
@@ -57,7 +57,7 @@ Vector Matrix::operator * (Vector tmp) {
  |  Zwraca:                                                                   |
  |      Wartosc macierzy w danym miejscu tablicy.                             |
  */
-double & Matrix::operator()(unsigned int row, unsigned int column) {
+double & Matrix::operator()(unsigned int row, unsigned int column){
     if (row >= SIZE) 
         throw std::runtime_error("Bledna wartosc indeksu macierzy");
     if (column >= SIZE)
@@ -74,13 +74,11 @@ double & Matrix::operator()(unsigned int row, unsigned int column) {
  |  Zwraca:                                                                   |
  |      Wartosc macierzy w danym miejscu tablicy jako stala.                  |
  */
-const double & Matrix::operator ()(unsigned int row, unsigned int column) const {
+const double & Matrix::operator ()(unsigned int row, unsigned int column) const{
     if (row >= SIZE)
         throw std::runtime_error("Bledna wartosc indeksu macierzy");
-
     if (column >= SIZE) 
         throw std::runtime_error("Bledna wartosc indeksu macierzy");
-
     return value[row][column];
 }
 
@@ -92,10 +90,10 @@ const double & Matrix::operator ()(unsigned int row, unsigned int column) const 
  |  Zwraca:                                                                   |
  |      Macierz - iloczyn dwóch podanych macierzy.                            |
  */
-Matrix Matrix::operator + (Matrix tmp) {
+Matrix Matrix::operator + (Matrix tmp){
     Matrix result;
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+    for (int i = 0; i < SIZE; ++i){
+        for (int j = 0; j < SIZE; ++j){
             result(i, j) = this->value[i][j] + tmp(i, j);
         }
     }
@@ -108,9 +106,9 @@ Matrix Matrix::operator + (Matrix tmp) {
  |      in - strumien wyjsciowy,                                              |
  |      mat - macierz.                                                        |
  */
-std::istream & operator>>(std::istream &in, Matrix &mat) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+std::istream & operator>>(std::istream &in, Matrix &mat){
+    for (int i = 0; i < SIZE; ++i){
+        for (int j = 0; j < SIZE; ++j){
             in >> mat(i, j);
         }
     }
@@ -125,9 +123,9 @@ std::istream & operator>>(std::istream &in, Matrix &mat) {
  |      out - strumien wejsciowy,                                             |
  |      mat - macierz.                                                        |
  */
-std::ostream & operator<<(std::ostream &out, const Matrix &mat) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
+std::ostream & operator<<(std::ostream &out, const Matrix &mat){
+    for (int i = 0; i < SIZE; ++i){
+        for (int j = 0; j < SIZE; ++j){
             out << "| " << mat(i, j) << " | "; //warto ustalic szerokosc wyswietlania dokladnosci liczb
         }
         std::cout << std::endl;
@@ -151,4 +149,4 @@ Matrix Matrix::Fill_matrix(double angle){
     this->value[1][0] = sin(angle_radians);
     this->value[1][1] = cos(angle_radians);
     return *this;
- }
+}

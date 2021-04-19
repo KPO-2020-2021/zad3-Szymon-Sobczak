@@ -26,8 +26,8 @@ class Matrix {
 private:
     double value[SIZE][SIZE];            /* Wartosci macierzy */
 public:
+    Matrix();                            /* Bezparametryczny konstruktor klasy */       
     Matrix(double [SIZE][SIZE]);         /* Konstruktor klasy z parametrem */
-    Matrix();                            /* Bezparametryczny konstruktor klasy */
     Vector operator * (Vector tmp);      /* Operator mnożenia przez wektor */
     Matrix operator + (Matrix tmp);      /* Operator dodwania dwoch macierzy */
     Matrix Fill_matrix(double angle);    /* Wypenienie macierzy wartosciami funkcji tryg. dla zadanego kąta obrotu */
@@ -39,4 +39,3 @@ std::istream & operator >> (std::istream &in, Matrix &mat);        /* Przeciazen
 std::ostream & operator << (std::ostream &out, Matrix const &mat); /* Przeciazenie operatora << sluzace wczytywaniu wartosci do macierzy */
 
 #endif
-

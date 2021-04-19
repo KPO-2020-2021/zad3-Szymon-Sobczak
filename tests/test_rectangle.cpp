@@ -14,7 +14,7 @@ TEST_CASE("Test konstruktora wieloparametrowego dla klasy rectangle"){
     CHECK((Example[0][0]==3 && Example[0][1]==1 && Example[1][0]==8 && Example[1][1]==1 && 
            Example[2][0]==8 && Example[2][1]==4 && Example[3][0]==3 && Example[3][1]==4));
 }
-
+ 
 TEST_CASE("Test wpraowadzania i odczytywania wartosci wierzcholkow prostokata z uzyciem operatora indeksowania "){
     Rectangle Example;
     double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4};

@@ -11,19 +11,21 @@
 
 /************************************************************************************************************************
  | Klasa modelujaca w programie pojecie prostokata, ktorego wierzcholki sa wyrazone za pomoca wektorow.                  |
- | Klasa posiada prywatne pole bedace tablica wektoror, opisujace wektorowo pozycje wierzcholkow prosotkata.             |
- | Klasa posiada publiczny konstrukotr domyśly oraz konstruktor pozwalajacy na inicjowanie prostokata za pomoca wektorow.|
+ | Klasa posiada prywatne pole "Corners" bedace tablica wektorow, opisujje ono wektorowo pozycje wierzcholkow prosotkata.|
+ | Klasa posiada publiczny konstruktor domyśly oraz konstruktor pozwalajacy na inicjowanie prostokata za pomoca wektorow.|
  | Klasa posiada publiczne metody pozwalajace na:                                                                        |
  |   - sprawdzenie czy prostokat posiada rowne przeciwlegle boki i wyswietlajacy informacje o tym na standarowe wyjscie, |
  |   - translacje prostokata o zadany wektor,                                                                            |
  |   - obrot prostokata wokol srodka ukladu wspolrzednych o zadany kat, wybrana ilosc razy.                              |
+ | Klasa zawiera publiczne przeciazenia operatora indeksujacego opowiedzialnych za wprowadzanie i odczytywanie wartosci  |
+ |   z wektorow.                                                                                                         |
 */
-
-class Rectangle {
+ 
+class Rectangle{
     private:  
         Vector Corners[CORNERS]; /* Wartosci wektorow reprezentujace wierzcholki prostokata */
     public:   
-        Rectangle();                                                               /* Bezparametryczny konstuktor klasy */
+        Rectangle();             /* Bezparametryczny konstuktor klasy */
         Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD); /* Wieloparametrowy konstuktor klasy */
         const Vector & operator [] (int index) const;                   /* Przeciazenia operatora indeksujacego */
         Vector & operator [] (int index);

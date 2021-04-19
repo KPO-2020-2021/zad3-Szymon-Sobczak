@@ -19,7 +19,7 @@ TEST_CASE("Test odczytywania wartosci wektora z uzyciem operatora indeksowania "
     b= Vec[1];
     CHECK((a==1 && b==2));
 }
-
+ 
 TEST_CASE("Test wpraowadzania wartosci do wektora z uzyciem operatora indeksowania "){
     Vector Vec;
     double a=7,b=15;
