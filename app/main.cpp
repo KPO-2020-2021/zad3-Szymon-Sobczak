@@ -1,6 +1,8 @@
-// Executables must have the following defined if the library contains
-// doctest definitions. For builds with this disabled, e.g. code shipped to
-// users, this can be left out.
+/* Przygotowal: Szymon Sobczak nr 259275 */
+
+/* Executables must have the following defined if the library contains
+doctest definitions. For builds with this disabled, e.g. code shipped to
+users, this can be left out. */
 #ifdef ENABLE_DOCTEST_IN_LIBRARY
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "../tests/doctest/doctest.h"
@@ -23,7 +25,7 @@ int main() {
     double X[]={2,2}, Y[]={50,2}, Z[]={50,35}, U[]={2,35}, Vt[]={15,30}, angle, multiplier; /* Inicjalizacja tablic wartosciami wierzcholkow prostokata oraz zmiennych potrzebnych w programie */
     Vector A(X),B(Y),C(Z),D(U),T(Vt),T_vector;    /* Inicjalizacja wektorow reprezentujacych wspolrzedne wierzcholkow prostokata i wektora translacji */
     Rectangle Rec(A,B,C,D);                       /* Inicjalizacja prostokata za pomoca wektorow */
-    PzG::LaczeDoGNUPlota Link;                    /* Ta zmienna jest potrzebna do wizualizacji rysunku prostokata */
+    PzG::LaczeDoGNUPlota Link;                    /* Zmienna potrzebna do wizualizacji rysunku prostokata */
     char Option;
 
     /********************************************************************************

@@ -27,7 +27,6 @@ TEST_CASE("Test wpraowadzania i odczytywania wartosci wierzcholkow prostokata z 
            Example[2][0]==8 && Example[2][1]==4 && Example[3][0]==3 && Example[3][1]==4));
 }
 
-
 TEST_CASE("Test operatora indeksowania - bledna wartosc indeksu podana przy odczytywaniu wartosci z prostokata"){
     double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4};
     Vector A(X),B(Y),C(Z),D(U);
@@ -58,20 +57,6 @@ TEST_CASE("Test wczytywania wartosci do wektora z uzyciem przeciazenia >> "){
     input >> Vec;
     CHECK ((Vec[0]==1 && Vec[1]==2));  
 }
-
-/*
-TEST_CASE("Test wczytywania wartosci wektorow reprezentujacych polozenia wierzcholkow prostokata za pomoca przeciazenia operatora >> "){
-    Rectangle Example;
-    double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4};
-    Vector A(X),B(Y),C(Z),D(U);
-    std::istringstream output;
-    output << A << B << C << D;
-    std::istringstream input((output));
-    input >> Example;
-    CHECK((Example[0][0]==3 && Example[0][1]==1 && Example[1][0]==8 && Example[1][1]==1 && 
-           Example[2][0]==8 && Example[2][1]==4 && Example[3][0]==3 && Example[3][1]==4));
-}
-*/
 
 TEST_CASE("Test dzialania metody przesunieca prostokata o zadany wektor"){
     double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4};

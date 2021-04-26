@@ -91,6 +91,8 @@ Vector Vector::operator * (const double &tmp){
 
 Vector Vector::operator / (const double &tmp){
     Vector result;
+    if (tmp == 0)
+        throw std::runtime_error("Wykonano dzielenie przez 0");
     for (int i = 0; i < SIZE; ++i){
         result[i] = size[i] / tmp;
     }
@@ -146,7 +148,7 @@ std::istream & operator >> (std::istream &in, Vector &tmp){
         in >> tmp[i];
     }
     if (in.fail())
-        throw std::runtime_error(":/ Podano wartosc nie bedaca typu double ");
+        throw std::runtime_error("Podano wartosc nie bedaca typu double ");
     std::cout << std::endl;
     return in;
 }
