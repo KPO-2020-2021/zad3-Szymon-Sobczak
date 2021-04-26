@@ -4,7 +4,7 @@
  * Po poprawnym skompilowaniu, aby uruchomić program, należy użyć polecenia "./main" w katalogu build.
 
 ## Uruchamianie Testów Programu
-    Testy jednostkowe programu uruchamiają się po wpisaniu do terminala "./unit_tests" po poprawnej kompilacji z użyciem pliku Makefile.
+ * Testy jednostkowe programu uruchamiają się po wpisaniu do terminala "./unit_tests" po poprawnej kompilacji z użyciem pliku Makefile.
 
 ## Building
 
