@@ -1,3 +1,10 @@
+## Uruchamianie Programu
+ * Aby móc poprawnie skompilować program należy najpierw użyć programu cmake do stworzenia pliku makefile w katalogu build.
+ * Następnie należy użyć Makefile poleceniem "make" aby skompilować program po wcześniejszym poprawnym stworzeniu pliku Makefile z pomocą cmake. 
+ * Po poprawnym skompilowaniu, aby uruchomić program, należy użyć polecenia "./main" w katalogu build.
+
+## Uruchamianie Testów Programu
+    Testy jednostkowe programu uruchamiają się po wpisaniu do terminala "./unit_tests" po poprawnej kompilacji z użyciem pliku Makefile.
 
 ## Building
 
