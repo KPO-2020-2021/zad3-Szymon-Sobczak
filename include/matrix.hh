@@ -37,5 +37,5 @@ public:
 
 std::istream & operator >> (std::istream &in, Matrix &mat);        /* Przeciazenie operatora >> sluzace wyswietlaniu macierzy */ 
 std::ostream & operator << (std::ostream &out, Matrix const &mat); /* Przeciazenie operatora << sluzace wczytywaniu wartosci do macierzy */
-
-#endif
+ 
+#endif 

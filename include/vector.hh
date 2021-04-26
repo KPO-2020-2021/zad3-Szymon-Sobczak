@@ -32,7 +32,7 @@ public:
     double & operator [] (int index);
 };
 
-std::ostream & operator << (std::ostream &out, Vector const &tmp); /* Przeciazenie operatora >> sluzace do wyswietlana wektora */ 
-std::istream & operator >> (std::istream &in, Vector &tmp);        /* Przeciazenie operatora << sluzace do wczytywania wartosci do wektora */
+std::ostream & operator << (std::ostream &out, Vector const &tmp); /* Przeciazenie operatora << sluzace do wyswietlana wektora */ 
+std::istream & operator >> (std::istream &in, Vector &tmp);        /* Przeciazenie operatora >> sluzace do wczytywania wartosci do wektora */
 
-#endif
+#endif 

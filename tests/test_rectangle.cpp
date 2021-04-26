@@ -51,6 +51,20 @@ TEST_CASE("Test wyswietlania wartosci wektorow reprezentujacych polozenia wierzc
 }
 
 
+TEST_CASE("Test zapisu inforamcji o wspolrzednych wierzcholkow prostokata do wskazanego pliku wraz ze sprawdzeniem ich porpawnosci"){
+    double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4};
+    Vector A(X),B(Y),C(Z),D(U);
+    Rectangle Example(A,B,C,D);
+    std::string test[10],pattern[10]= {"3.0000000000","1.0000000000", "8.0000000000", "1.0000000000", "8.0000000000","4.0000000000","3.0000000000","4.0000000000","3.0000000000","1.0000000000"};
+    std::ifstream  StrmPlikowy;
+    Example.Write_rec_to_file("../tests/datasets/test_rec.dat");
+    StrmPlikowy.open("../tests/datasets/test_rec.dat");
+    for (int i=0; i<10 ; i++){
+        StrmPlikowy >> test[i];
+        CHECK((pattern[i]==test[i]));
+    }  
+}
+
 TEST_CASE("Test wczytywania wartosci do wektora z uzyciem przeciazenia >> "){
     Vector Vec;
     std::istringstream input("1 2");

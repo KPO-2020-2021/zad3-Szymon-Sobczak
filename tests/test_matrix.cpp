@@ -6,7 +6,7 @@ TEST_CASE("Test konstrukora bezparametrowego dla klasy Matrix"){
     CHECK((Example(0,0)==0 && Example(0,1)==0 && Example(1,0)==0 && Example(1,1)==0));
 }
 
-TEST_CASE("Test konstrukora z argumentem dla klasy Matrix. Stworzenie macierzy 2x2"){
+TEST_CASE("Test konstrukora z argumentem dla klasy Matrix. Stworzenie macierzy 2x2"){ 
     Matrix Example[2][2];
     CHECK((sizeof(Example)/sizeof(Matrix)==4));
 }

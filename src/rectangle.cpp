@@ -29,7 +29,7 @@ Rectangle::Rectangle(){
  |  CornerC - wektor opisujacy polozenie wierzcholka C.                                                         |
  |  CornerD - wektor opisujacy polozenie wierzcholka D.                                                         |
  | Zwraca:                                                                                                      |
- |   Prostokat o wierzcholakach zainicjowanych wartosciami werkotrow.                                           |
+ |   Prostokat o wierzcholakach zainicjowanych wartosciami wektorow.                                            |
  */
 Rectangle::Rectangle(Vector CornerA, Vector CornerB, Vector CornerC, Vector CornerD){
     Corners[0] = CornerA; 
@@ -82,19 +82,19 @@ Rectangle Rectangle::Translate_rec(Vector const vector){
     for (int i=0; i<4; i++){
         this->Corners[i] =this->Corners[i] + vector;
     }
-   return *this;
+    return *this;
 }
 
 /*****************************************************************************************************
  | Metoda klasy Rectangle realizaujca dzialanie obrotu prostokata o wybrany kat, wybrana ilosc razy. |   
  | Warunki wstepne:                                                                                  |
  |   multiplier - wartosc musi miesicic sie w zakresie wlasciwym int.                                |
- |   angle - wartosc musi byc typu double                                                            |
+ |   angle - wartosc musi byc typu double.                                                           |
  | Warunki koncowe:                                                                                  |
  |   brak.                                                                                           |
  | Argumenty:                                                                                        |
- |   multiplier - ile razy ma zostac wykonany obrot                                                  |
- |   angle - kat o jaki ma zostac obrocony prostokat                                                 |
+ |   multiplier - ile razy ma zostac wykonany obrot.                                                 |
+ |   angle - kat o jaki ma zostac obrocony prostokat.                                                |
  | Zwraca:                                                                                           |
  |  Prostokat o zmienionym polozeniu za sprawa operacji obrotu.                                      |
  */
@@ -187,7 +187,7 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
  | Zwraca:                                                                                         |
  |   Wypisuje na standardowe wyjscie dane o bokach prostokata.                                     |
  */
-void Rectangle::Is_it_rec(){
+void Rectangle::Is_it_rec() const{
     double a,b,c,d;
     a = sqrt(pow(this->Corners[1][0]-this->Corners[0][0],2)+pow(this->Corners[1][1]-this->Corners[0][1],2)); /* Wyliczenie dlugosci bokow */
     b = sqrt(pow(this->Corners[2][0]-this->Corners[1][0],2)+pow(this->Corners[2][1]-this->Corners[1][1],2));

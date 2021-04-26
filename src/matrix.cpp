@@ -46,7 +46,7 @@ Vector Matrix::operator * (Vector tmp){
             result[i] += value[i][j] * tmp[j];
         }
     }
-    return result;
+    return result; 
 }
 
 /******************************************************************************

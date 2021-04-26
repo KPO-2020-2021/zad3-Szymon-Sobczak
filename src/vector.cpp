@@ -58,7 +58,7 @@ Vector Vector::operator - (const Vector &v){
     for (int i = 0; i < SIZE; ++i) {
         result[i] = size[i] -= v[i];
     }
-    return result;
+    return result; 
 }
 
 /******************************************************************************

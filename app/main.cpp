@@ -64,7 +64,7 @@ int main() {
             std::cin >> Option;
             switch(Option){
                 case 'o': /* Opcja obrotu prostokata */
-                    std::cout << "Podaj wartosc kata obrotu w stopniach > "; /* Okreslenie parametrow obrotu prostokata */
+                    std::cout << "Podaj wartosc kata obrotu w stopniach > "; /* Okreslenie parametrow obrotu prostokata- kata i ilosci obrotow */
                     std::cin >> angle;
                     if(std::cin.fail())
                         throw std::runtime_error("Podano wyrazenie nie bedace typu double");
@@ -155,9 +155,9 @@ int main() {
             }
         }
     }
-    catch (std::runtime_error & e){
+    catch (std::runtime_error & e){ /* W wyniku wyrzucenia bledu program poinformuje o tym i zakonczy swoje dzialanie */
         std::cout << ":O Wystapil blad!"<< std::endl << e.what() << std::endl;
         exit(1);
     }
     return 0;
-}
+} 
