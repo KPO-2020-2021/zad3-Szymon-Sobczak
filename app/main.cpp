@@ -23,9 +23,9 @@ users, this can be left out. */
 
 int main() {
     double X[]={2,2}, Y[]={50,2}, Z[]={50,35}, U[]={2,35}, Vt[]={15,30}, angle, multiplier; /* Inicjalizacja tablic wartosciami wierzcholkow prostokata oraz zmiennych potrzebnych w programie */
-    Vector A(X),B(Y),C(Z),D(U),T(Vt),T_vector;    /* Inicjalizacja wektorow reprezentujacych wspolrzedne wierzcholkow prostokata i wektora translacji */
-    Rectangle Rec(A,B,C,D);                       /* Inicjalizacja prostokata za pomoca wektorow */
-    PzG::LaczeDoGNUPlota Link;                    /* Zmienna potrzebna do wizualizacji rysunku prostokata */
+    Vector A(X),B(Y),C(Z),D(U),T(Vt),T_vector;   /* Inicjalizacja wektorow reprezentujacych wspolrzedne wierzcholkow prostokata i wektora translacji */
+    Rectangle Rec(A,B,C,D);                      /* Inicjalizacja prostokata za pomoca wektorow */
+    PzG::LaczeDoGNUPlota Link;                   /* Zmienna potrzebna do wizualizacji rysunku prostokata */
     char Option;
 
     /********************************************************************************
@@ -59,7 +59,7 @@ int main() {
                   << "\tw - wyswietlenie wspolrzednych wierzcholkow " << std::endl
                   << "\tm - wyswietl menu" << std::endl
                   << "\tk - koniec dzialania programu" << std::endl;
-        while (Option != 'k'){ /* Glowna petla menu, dzialajaca do czasu wybrania opcji zakonczenia - k */
+        while (Option != 'k'){ /* Glowna petla menu, dzialajaca do czasu wybrania opcji zakonczenia- k */
             std::cout << "Twoj wybor? (m - menu) > ";
             std::cin >> Option;
             switch(Option){
@@ -95,7 +95,7 @@ int main() {
                             Link.Rysuj();
                         break;
 
-                        default: /*Dzialanie,gdy opcja podmenu nie bedzie zdefiniowana */
+                        default: /*Dzialanie, gdy opcja podmenu nie bedzie zdefiniowana */
                             std::cout << ":/ Opcja niezdefiniowana" << std::endl; 
                         break;
                     }
@@ -126,7 +126,7 @@ int main() {
                             Link.Rysuj();
                         break;
 
-                        default: /*Dzialanie,gdy opcja podmenu nie bedzie zdefiniowana */
+                        default: /*Dzialanie, gdy opcja podmenu nie bedzie zdefiniowana */
                             std::cout << ":/ Opcja niezdefiniowana" << std::endl; 
                         break;
                     }

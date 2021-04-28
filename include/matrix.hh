@@ -1,5 +1,3 @@
-#ifndef MATRIX_HH
-#define MATRIX_HH
 #pragma once
 
 #include "size.hh"
@@ -22,20 +20,20 @@
  |  dla zadanego konta obrotu.                                                       |
  */
 
-class Matrix {
+class Matrix{
 private:
     double value[SIZE][SIZE];            /* Wartosci macierzy */
 public:
     Matrix();                            /* Bezparametryczny konstruktor klasy */       
     Matrix(double [SIZE][SIZE]);         /* Konstruktor klasy z parametrem */
+
     Vector operator * (Vector tmp);      /* Operator mnożenia przez wektor */
     Matrix operator + (Matrix tmp);      /* Operator dodwania dwoch macierzy */
-    Matrix Fill_matrix(double angle);    /* Wypenienie macierzy wartosciami funkcji tryg. dla zadanego kąta obrotu */
+    Matrix Fill_matrix (double angle);   /* Wypenienie macierzy wartosciami funkcji tryg. dla zadanego kąta obrotu */
+    double determinant_of_the_matrix() const; /* Obliczenie wyznacznika macierzy */
     double & operator () (unsigned int row, unsigned int column); /* Przeciazenia operatora funkcyjnego */
     const double & operator () (unsigned int row, unsigned int column) const;
 };
 
 std::istream & operator >> (std::istream &in, Matrix &mat);        /* Przeciazenie operatora >> sluzace wyswietlaniu macierzy */ 
 std::ostream & operator << (std::ostream &out, Matrix const &mat); /* Przeciazenie operatora << sluzace wczytywaniu wartosci do macierzy */
- 
-#endif 

@@ -53,3 +53,16 @@ TEST_CASE("Test mnozenia maceirzy i wektora przy pomocy przeciazenia operatora *
     Vec=Example*Vec;
     CHECK((Vec[0]==25 && Vec[1]==55));
 }
+
+TEST_CASE("Test wyznaczenia wyznacznika macierzy z uzyciem metody 'determinant_of_the_matrix'"){
+    double values[2][2] = {89,51,33,47};
+    Matrix example_matrix(values);
+    CHECK(example_matrix.determinant_of_the_matrix()==2500);
+}
+
+TEST_CASE("Test detekcji bledu wyznaczenia wyznacznika macierzy z uzyciem metody 'determinant_of_the_matrix', gdy w macierzy znajduje sie wartosc 0.0"){
+    double values[2][2] = {0,51,33,47};
+    Matrix example_matrix(values);
+    WARN_THROWS(example_matrix.determinant_of_the_matrix());
+}
+     

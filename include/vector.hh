@@ -1,5 +1,3 @@
-#ifndef VECTOR_HH
-#define VECTOR_HH
 #pragma once
 
 #include "size.hh"
@@ -18,7 +16,7 @@
  |   dodawania, odejmowania, mnozenia, dzielenia dwoch wektorow.                        |
  */
 
-class Vector {
+class Vector{
 private:
     double size[SIZE];     /* Tablica wartosci wektora */
 public:
@@ -34,5 +32,3 @@ public:
 
 std::ostream & operator << (std::ostream &out, Vector const &tmp); /* Przeciazenie operatora << sluzace do wyswietlana wektora */ 
 std::istream & operator >> (std::istream &in, Vector &tmp);        /* Przeciazenie operatora >> sluzace do wczytywania wartosci do wektora */
-
-#endif 

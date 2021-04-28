@@ -1,5 +1,4 @@
-#ifndef PROSTOKAT_HH
-#define PROSTOKAT_HH
+#pragma once
 
 #include <iostream>
 #include <fstream>
@@ -31,11 +30,10 @@ class Rectangle{
         Vector & operator [] (int index);
         Rectangle Translate_rec(Vector const vector);                   /* Translacja prostokata prostokata o zadany wektor */
         Rectangle Rotate_rec(int const multiplier, double const angle); /* Obrot prostokata o zadany kat, zadana ilosc razy */
-        void Is_it_rec() const;                                               /* Sprawdzenie czy dany prostokat ma rowne przeciwlegle boki */
+        void Is_it_rec() const;                                         /* Sprawdzenie czy dany prostokat ma rowne przeciwlegle boki */
         void Write_rec_to_file(const char *sNazwaPliku) const;          /* Zapis wartosci wspolrzendych wierzcholkow do pliku */
 };
 
 std::ostream & operator << (std::ostream & Strm, const Rectangle & Rc); /* Przeciazenie operatora << sluzace wyswietlaniu wartosci prostokata */           
 std::istream & operator >> (std::ostream & Strm, Rectangle & Rc);       /* Przeciazenie operatora >> sluzace wczytywaniu wartosci do prostokata */
 
-#endif

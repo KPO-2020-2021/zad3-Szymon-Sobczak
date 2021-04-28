@@ -150,3 +150,27 @@ Matrix Matrix::Fill_matrix(double angle){
     this->value[1][1] = cos(angle_radians);
     return *this;
 }
+
+/********************************************************************************************
+ |  Metoda klasy Matrix obliczajaca wyznacznik macierzy z uzyciem metody eliminacji Gaussa  |
+ |  Argumenty:                                                                              |
+ |      this - macierz, ktorej wyznacznik bedzie obliczany.                                 |
+ |  Zwraca:                                                                                 |
+ |      Wartosc wyznacznika macierzy typu double                                            |
+ */
+
+double Matrix::determinant_of_the_matrix() const{
+    double ratio;
+    Matrix temp_matrix = *this; /* Stworzenie nowej tymczasowej macierzy sluzacej do obliczen */
+    for(int i = 0; i < SIZE; i++){
+        if(temp_matrix(i,i) == 0.0)
+            throw std::runtime_error(":/ Podczas wyznaczania wyznacznika, napotkano 0 w macierzy ");
+        for(int j = i + 1; j < SIZE; j++){
+            ratio = temp_matrix(j,i) / temp_matrix(i,i);
+            for(int k = 0; k < SIZE; k++){
+                temp_matrix(j,k) -=  ratio * value[i][k];
+            }
+        }
+    }
+    return temp_matrix(0,0) * temp_matrix(1,1);
+}

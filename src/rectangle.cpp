@@ -189,12 +189,12 @@ void Rectangle::Write_rec_to_file(const char *sNazwaPliku) const{
  */
 void Rectangle::Is_it_rec() const{
     double a,b,c,d;
-    a = sqrt(pow(this->Corners[1][0]-this->Corners[0][0],2)+pow(this->Corners[1][1]-this->Corners[0][1],2)); /* Wyliczenie dlugosci bokow */
-    b = sqrt(pow(this->Corners[2][0]-this->Corners[1][0],2)+pow(this->Corners[2][1]-this->Corners[1][1],2));
-    c = sqrt(pow(this->Corners[3][0]-this->Corners[2][0],2)+pow(this->Corners[3][1]-this->Corners[2][1],2));
-    d = sqrt(pow(this->Corners[0][0]-this->Corners[3][0],2)+pow(this->Corners[0][1]-this->Corners[3][1],2));
+    a = sqrt(pow(this->Corners[1][0] - this->Corners[0][0],2) + pow(this->Corners[1][1] - this->Corners[0][1],2)); /* Wyliczenie dlugosci bokow */
+    b = sqrt(pow(this->Corners[2][0] - this->Corners[1][0],2) + pow(this->Corners[2][1] - this->Corners[1][1],2));
+    c = sqrt(pow(this->Corners[3][0] - this->Corners[2][0],2) + pow(this->Corners[3][1] - this->Corners[2][1],2));
+    d = sqrt(pow(this->Corners[0][0] - this->Corners[3][0],2) + pow(this->Corners[0][1] - this->Corners[3][1],2));
     std::cout << std::endl;
-    if(a-c < MAX_VALUE_DIFF && c-a < MAX_VALUE_DIFF){ /* Sprawdzenie spojnosci dlugosci przeciewleglych bokow */
+    if(a - c < MAX_VALUE_DIFF && c - a < MAX_VALUE_DIFF){ /* Sprawdzenie spojnosci dlugosci przeciewleglych bokow */
         if(a == b && a == d && c == b && c == d) /* Warunek generujacy komunikat, gdy badana figura to kwadrat */
             std::cout << ":) Przeciwlegle boki kwadratu sa sobie rowne" << std::endl;
         else if(a > b && a > d && c > b && c > d) /* Ustalenie, ktore boki prostokata sa dluzsze, a ktore krotsze */
@@ -212,7 +212,7 @@ void Rectangle::Is_it_rec() const{
     std::cout << "Dlugosc drugiego boku: " << std::fixed << std::setprecision(10) << c << std::endl;
     std::cout << std::endl;
     
-    if(b-d < MAX_VALUE_DIFF && d-b < MAX_VALUE_DIFF){
+    if(b - d < MAX_VALUE_DIFF && d - b < MAX_VALUE_DIFF){
         if(a == b && a == d && c == b && c == d) 
             std::cout << ":) Przeciwlegle boki kwadratu sa sobie rowne" << std::endl;
         else if(b >= a && b >= c && d >= a && d >= c)
