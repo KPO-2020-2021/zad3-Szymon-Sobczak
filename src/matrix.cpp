@@ -39,7 +39,7 @@ Matrix::Matrix(double tmp[SIZE][SIZE]){
  |      Iloczyn dwoch skladnikow przekazanych jako wektor.                    |
  */
 
-Vector Matrix::operator * (Vector tmp){
+Vector Matrix::operator * (Vector const &tmp){
     Vector result;
     for (int i = 0; i < SIZE; ++i){
         for (int j = 0; j < SIZE; ++j){
@@ -90,7 +90,7 @@ const double & Matrix::operator ()(unsigned int row, unsigned int column) const{
  |  Zwraca:                                                                   |
  |      Macierz - iloczyn dwóch podanych macierzy.                            |
  */
-Matrix Matrix::operator + (Matrix tmp){
+Matrix Matrix::operator + (Matrix const &tmp){
     Matrix result;
     for (int i = 0; i < SIZE; ++i){
         for (int j = 0; j < SIZE; ++j){
@@ -142,12 +142,12 @@ std::ostream & operator<<(std::ostream &out, const Matrix &mat){
  |  Zwraca:                                                                   |
  |      Poprawnie zainizalinzowana wartoscami macierz typu Matrix.            |
  */
-Matrix Matrix::Fill_matrix(double angle){
+Matrix Matrix::Fill_matrix(double const angle){
     double angle_radians = angle * M_PI / 180.0;
-    this->value[0][0] = cos(angle_radians);
-    this->value[0][1] = -sin(angle_radians);
-    this->value[1][0] = sin(angle_radians);
-    this->value[1][1] = cos(angle_radians);
+    value[0][0] = cos(angle_radians);
+    value[0][1] = -sin(angle_radians);
+    value[1][0] = sin(angle_radians);
+    value[1][1] = cos(angle_radians);
     return *this;
 }
 

@@ -20,7 +20,6 @@ Vector::Vector(){
  |  Zwraca:                                                                   |
  |      Tablice wypelniona wartosciami podanymi w argumencie.                 |
  */
-
 Vector::Vector(double tmp[SIZE]){
     for (int i = 0; i < SIZE; ++i){
         size[i] = tmp[i];
@@ -55,12 +54,11 @@ Vector Vector::operator + (const Vector &v){
  */
 Vector Vector::operator - (const Vector &v){
     Vector result;
-    for (int i = 0; i < SIZE; ++i) {
+    for (int i = 0; i < SIZE; ++i){
         result[i] = size[i] -= v[i];
     }
     return result; 
 }
-
 /******************************************************************************
  |  Realizuje mnozenie wektora przez liczbe zmiennoprzecinkowa.               |
  |  Argumenty:                                                                |
@@ -70,7 +68,6 @@ Vector Vector::operator - (const Vector &v){
  |      Iloczyn dwoch skladnikow przekazanych jako wskaznik                   |
  |      na parametr.                                                          |
  */
-
 Vector Vector::operator * (const double &tmp){
     Vector result;
     for (int i = 0; i < SIZE; ++i){
@@ -88,7 +85,6 @@ Vector Vector::operator * (const double &tmp){
  |      Iloraz dwoch skladnikow przekazanych jako wskaznik                    |
  |      na parametr.                                                          |
  */
-
 Vector Vector::operator / (const double &tmp){
     Vector result;
     if (tmp == 0)

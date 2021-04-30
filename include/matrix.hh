@@ -18,6 +18,7 @@
  |  dwoch macierzy.                                                                  | 
  | Klasa posiada metode inicjujaca macierz wartosciami funkcji trygonometrycznych    |
  |  dla zadanego konta obrotu.                                                       |
+ | W roli modyfikacji zadania, dodano metode wyznaczajaca wyznacznik macierzy.       |
  */
 
 class Matrix{
@@ -27,13 +28,14 @@ public:
     Matrix();                            /* Bezparametryczny konstruktor klasy */       
     Matrix(double [SIZE][SIZE]);         /* Konstruktor klasy z parametrem */
 
-    Vector operator * (Vector tmp);      /* Operator mnożenia przez wektor */
-    Matrix operator + (Matrix tmp);      /* Operator dodwania dwoch macierzy */
-    Matrix Fill_matrix (double angle);   /* Wypenienie macierzy wartosciami funkcji tryg. dla zadanego kąta obrotu */
+    Vector operator * (Vector const &tmp);    /* Operator mnożenia przez wektor */
+    Matrix operator + (Matrix const &tmp);    /* Operator dodwania dwoch macierzy */
+    Matrix Fill_matrix (double const angle);  /* Wypenienie macierzy wartosciami funkcji tryg. dla zadanego kąta obrotu */
     double determinant_of_the_matrix() const; /* Obliczenie wyznacznika macierzy */
     double & operator () (unsigned int row, unsigned int column); /* Przeciazenia operatora funkcyjnego */
     const double & operator () (unsigned int row, unsigned int column) const;
 };
 
-std::istream & operator >> (std::istream &in, Matrix &mat);        /* Przeciazenie operatora >> sluzace wyswietlaniu macierzy */ 
-std::ostream & operator << (std::ostream &out, Matrix const &mat); /* Przeciazenie operatora << sluzace wczytywaniu wartosci do macierzy */
+std::ostream & operator << (std::ostream &out, Matrix const &mat); /* Przeciazenie operatora << sluzace wyswietlaniu macierzy */ 
+std::istream & operator >> (std::istream &in, Matrix &mat);        /* Przeciazenie operatora >> sluzace wczytywaniu wartosci do macierzy */ 
+

@@ -1,13 +1,17 @@
 ## Uruchamianie Programu
- * Aby móc poprawnie skompilować program należy najpierw użyć programu cmake do stworzenia pliku makefile w katalogu build.
- * Następnie należy użyć Makefile poleceniem "make" aby skompilować program po wcześniejszym poprawnym stworzeniu pliku Makefile z pomocą cmake. 
+ * Aby móc poprawnie skompilować program należy najpierw stworzyc katalog build, a nastepnie użyć programu cmake do stworzenia pliku makefile w katalogu build.
+ * Następnie należy użyć Makefile poleceniem "make", aby skompilować program po wcześniejszym poprawnym stworzeniu pliku Makefile z pomocą cmake. 
  * Po poprawnym skompilowaniu, aby uruchomić program, należy użyć polecenia "./main" w katalogu build.
 
 ## Uruchamianie Testów Programu
  * Testy jednostkowe programu uruchamiają się po wpisaniu do terminala "./unit_tests" po poprawnej kompilacji z użyciem pliku Makefile.
 
-## Building
+## Informacje dodatkowe
+ * Możliwe jest animowanie obrotu o zadany kąt i przesunięcie o zadany wektor.
+ * Wykonując obrót o zadany kąt, należy jednak pamiętać, aby stosować tę opcję dla małych kątów, gdyż dla dużych kątów animacja jest bardzo szybka, przez co niezauważalna. 
+ * Możliwe jest badanie kolizyjności prostokątów, prostokaty traktowane sa jako puste.
 
+## Building
 Build by making a build directory (i.e. `build/`), run `cmake` in that dir, and then use `make` to build the desired target.
 
 Requirements: cmake, gnuplot, doxygen + dot

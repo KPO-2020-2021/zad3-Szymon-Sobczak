@@ -28,6 +28,10 @@ int main() {
     PzG::LaczeDoGNUPlota Link;                   /* Zmienna potrzebna do wizualizacji rysunku prostokata */
     char Option;
 
+    double X2[]={10,10}, Y2[]={60,10}, Z2[]={60,45}, U2[]={10,45}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);                      
+    
     /********************************************************************************
      |   Wspolrzedne wierzcholkow beda zapisywane w pliku "prostokat.dat"           |
      |  Ponizsze metody powoduja, ze dane z pliku beda wizualizowane na dwa sposoby:|
@@ -47,18 +51,19 @@ int main() {
      |  jako wspolrzedne punktow podajemy tylko x,y.                               |
     */
     Link.ZmienTrybRys(PzG::TR_2D);
-
     try{
         Rec.Write_rec_to_file("../datasets/prostokat.dat"); /* Wyswietlenie w GNUplot stanu poczatkowego prostokata */
         Link.Rysuj();
-        std::cout << "Poczatkowe wspolrzedne prostokata: " << std::endl;
+        std::cout << "Poczatkowy stan bokow prostokata: " << std::endl;
         Rec.Is_it_rec(); 
         std::cout << "Menu wyboru opcji:" << std::endl
                   << "\to - obrot prostokata o zadany kat " << std::endl
                   << "\tp - przesuniecie prostokata o zadany wektor " << std::endl
                   << "\tw - wyswietlenie wspolrzednych wierzcholkow " << std::endl
                   << "\tm - wyswietl menu" << std::endl
+                  << "\tc - sprawdzenie kolizji" << std::endl
                   << "\tk - koniec dzialania programu" << std::endl;
+                  
         while (Option != 'k'){ /* Glowna petla menu, dzialajaca do czasu wybrania opcji zakonczenia- k */
             std::cout << "Twoj wybor? (m - menu) > ";
             std::cin >> Option;
@@ -110,7 +115,7 @@ int main() {
                         case 'T':  /* Gdy uzytkownik zdecyduje sie na animacje translacji */
                             T_vector/FRAMES;
                             for(int i=0;i<FRAMES;i++){
-                                Rec.Translate_rec(T_vector/FRAMES);/* Wywolanie metody przesuwajacej prostokat raz, o ulamek wybranego kata, w celu nadania wrazenia ruchu */
+                                Rec.Translate_rec(T_vector/FRAMES);/* Wywolanie metody przesuwajacej prostokat raz, o ulamek wybranego wektora, w celu nadania wrazenia ruchu */
                                 Rec.Write_rec_to_file("../datasets/prostokat.dat");
                                 usleep(4000);
                                 Link.Rysuj();
@@ -143,11 +148,27 @@ int main() {
                               << "\tp - przesuniecie prostokata o zadany wektor " << std::endl
                               << "\tw - wyswietlenie wspolrzednych wierzcholkow " << std::endl
                               << "\tm - wyswietl menu" << std::endl
+                              << "\tc - sprawdzenie kolizji" << std::endl
                               << "\tk - koniec dzialania programu" << std::endl;
                 break;
 
                 case 'k': /* Opcja konczaca program */
                     std::cout << ":) Konczenie pracy programu" << std::endl;
+                break;
+
+                case 'c': /* Sprawdzenie kolizji dwoch prostokatow */
+                    std::cout << "Test kolizji prostokatow " << std::endl;
+                    Rec2.Write_rec_to_file("../datasets/prostokat_2.dat");
+                    Link.DodajNazwePliku("../datasets/prostokat_2.dat",PzG::RR_Ciagly,2);
+                    Link.DodajNazwePliku("../datasets/prostokat_2.dat",PzG::RR_Punktowy,2);
+                    Link.Rysuj();
+                    if(Rec.collision(Rec2)==1)
+                        std::cout << ":O Wykryto kolizje!" << std::endl;
+                    else 
+                        if(Rec2.collision(Rec)) 
+                            std::cout << ":O Wykryto kolizje!" << std::endl;
+                        else
+                            std::cout << ":) Brak kolizji." << std::endl; 
                 break;
 
                 default: /* dzialanie, gdy podana opcja nie bedzie uprzednio zdefiniowana */

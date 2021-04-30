@@ -50,7 +50,6 @@ TEST_CASE("Test wyswietlania wartosci wektorow reprezentujacych polozenia wierzc
     CHECK(("3.0000000000\t1.0000000000\t\n8.0000000000\t1.0000000000\t\n8.0000000000\t4.0000000000\t\n3.0000000000\t4.0000000000\t\n"==out.str()));
 }
 
-
 TEST_CASE("Test zapisu inforamcji o wspolrzednych wierzcholkow prostokata do wskazanego pliku wraz ze sprawdzeniem ich porpawnosci"){
     double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4};
     Vector A(X),B(Y),C(Z),D(U);
@@ -83,7 +82,7 @@ TEST_CASE("Test dzialania metody przesunieca prostokata o zadany wektor"){
            Example[2][0]==9 && Example[2][1]==6 && Example[3][0]==4 && Example[3][1]==6));
 }
 
-TEST_CASE("Test dzialania metody obrotu prostokata o zadany kat, wybrana ilosc razy "){
+TEST_CASE("Test dzialania metody obrotu prostokata o zadany kat, wybrana ilosc razy"){
     double X[]={3,1}, Y[]={8,1}, Z[]={8,4}, U[]={3,4}, angle= 90, mulitpier = 3;
     Vector A(X),B(Y),C(Z),D(U);
     Rectangle Example(A,B,C,D);
@@ -98,4 +97,99 @@ TEST_CASE("Test dzialania metody obrotu prostokata o zadany kat, wybrana ilosc r
             Example[2][1]>-8-MAX_VALUE_DIFF && Example[2][1]<-8+MAX_VALUE_DIFF &&
             Example[3][0]>4-MAX_VALUE_DIFF && Example[3][0]<4+MAX_VALUE_DIFF &&
             Example[3][1]>-3-MAX_VALUE_DIFF && Example[3][1]<-3+MAX_VALUE_DIFF));
+}
+
+TEST_CASE("Test dzialania metody sprawdzającej kolizyjność prostokątów nachodzacych na siebie, równoległych do osi OX i OY."){
+    double X[]={1,2}, Y[]={15,2}, Z[]={15,8}, U[]={1,8};
+    Vector A(X),B(Y),C(Z),D(U);   
+    Rectangle Rec(A,B,C,D);  
+    Rec.Write_rec_to_file("../tests/datasets/coll_rec1.dat");   
+
+    double X2[]={4,5}, Y2[]={17,5}, Z2[]={17,11}, U2[]={4,11}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);   
+    Rec2.Write_rec_to_file("../tests/datasets/coll_rec2.dat");   
+
+    CHECK((Rec.collision(Rec2)==true));
+    CHECK((Rec2.collision(Rec)==true));
+}
+
+TEST_CASE("Test dzialania metody sprawdzającej kolizyjność prostokątów nie nachodzacych na siebie, równoległych do osi OX i OY."){
+    double X[]={1,2}, Y[]={15,2}, Z[]={15,8}, U[]={1,8};
+    Vector A(X),B(Y),C(Z),D(U);   
+    Rectangle Rec(A,B,C,D);  
+    Rec.Write_rec_to_file("../tests/datasets/coll_rec1.dat");   
+
+    double X2[]={16,8}, Y2[]={28,8}, Z2[]={28,14}, U2[]={16,14}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);   
+    Rec2.Write_rec_to_file("../tests/datasets/coll_rec2.dat");  
+
+    CHECK((Rec.collision(Rec2)==false));
+    CHECK((Rec2.collision(Rec)==false));
+}
+
+TEST_CASE("Test dzialania metody sprawdzającej kolizyjność prostokątów nie nachodzacych na siebie, nachylonych pod tym samym katem 45 stopni."){
+    double X[]={0,1.41}, Y[]={5.66,7.07}, Z[]={-0.71,13.44}, U[]={-6.36,7.78};
+    Vector A(X),B(Y),C(Z),D(U);  
+    Rectangle Rec(A,B,C,D);  
+    Rec.Write_rec_to_file("../tests/datasets/coll_rec1.dat");    
+    double X2[]={4.24,9.9}, Y2[]={6.36,7.78}, Z2[]={9.19,10.61}, U2[]={7.07,12.73}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);   
+    Rec2.Write_rec_to_file("../tests/datasets/coll_rec2.dat");   
+    CHECK((Rec.collision(Rec2)==false));
+    CHECK((Rec2.collision(Rec)==false));
+}
+
+TEST_CASE("Test dzialania metody sprawdzającej kolizyjność prostokątów nachodzacych na siebie, gdzie 1 jest nachylony pod katem 45 stopni a 2 rownolegly do osi OX i OY nachylonych pod rozynmi katami."){
+    double X[]={-0.71,2.12},Y[]={9.19,12.02}, Z[]={4.95,16.26}, U[]={-4.95,6.36};
+    Vector A(X),B(Y),C(Z),D(U);  
+    Rectangle Rec(A,B,C,D);  
+    Rec.Write_rec_to_file("../tests/datasets/coll_rec1.dat");    
+    double X2[]={6,12}, Y2[]={6,6}, Z2[]={14,6}, U2[]={14,12}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);   
+    Rec2.Write_rec_to_file("../tests/datasets/coll_rec2.dat");   
+    CHECK((Rec.collision(Rec2)==true));
+    CHECK((Rec2.collision(Rec)==true));
+}
+
+TEST_CASE("Test dzialania metody sprawdzającej kolizyjność prostokątów nachodzacych na siebie, stycznych 1 bokiem "){
+    double X[]={1,2}, Y[]={15,2}, Z[]={15,8}, U[]={1,8};
+    Vector A(X),B(Y),C(Z),D(U); 
+    Rectangle Rec(A,B,C,D);  
+    Rec.Write_rec_to_file("../tests/datasets/coll_rec1.dat");    
+    double X2[]={15,2}, Y2[]={20,2}, Z2[]={20,8}, U2[]={15,8}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);   
+    Rec2.Write_rec_to_file("../tests/datasets/coll_rec2.dat");   
+    CHECK((Rec.collision(Rec2)==true));
+    CHECK((Rec2.collision(Rec)==true));
+}
+
+TEST_CASE("Test dzialania metody sprawdzającej kolizyjność prostokątów nachodzacych na siebie, stycznych 1 wierzcholkiem "){
+    double X[]={1,2}, Y[]={15,2}, Z[]={15,8}, U[]={1,8};
+    Vector A(X),B(Y),C(Z),D(U);  
+    Rectangle Rec(A,B,C,D);  
+    Rec.Write_rec_to_file("../tests/datasets/coll_rec1.dat");    
+    double X2[]={15,8}, Y2[]={22,8}, Z2[]={22,14}, U2[]={15,14}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);   
+    Rec2.Write_rec_to_file("../tests/datasets/coll_rec2.dat");   
+    CHECK((Rec.collision(Rec2)==true));
+    CHECK((Rec2.collision(Rec)==true));
+}
+
+TEST_CASE("Test dzialania metody sprawdzającej kolizyjność takich samych prostokątów nachodzacych na siebie w calosci "){
+    double X[]={1,2}, Y[]={15,2}, Z[]={15,8}, U[]={1,8};
+    Vector A(X),B(Y),C(Z),D(U);  
+    Rectangle Rec(A,B,C,D);  
+    Rec.Write_rec_to_file("../tests/datasets/coll_rec1.dat");    
+    double X2[]={1,2}, Y2[]={15,2}, Z2[]={15,8}, U2[]={1,8}; 
+    Vector A2(X2),B2(Y2),C2(Z2),D2(U2);   
+    Rectangle Rec2(A2,B2,C2,D2);   
+    Rec2.Write_rec_to_file("../tests/datasets/coll_rec2.dat");   
+    CHECK((Rec.collision(Rec2)==true));
+    CHECK((Rec2.collision(Rec)==true));
 }

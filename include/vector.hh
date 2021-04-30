@@ -13,7 +13,7 @@
  |   danych o wspolrzednych wektora.                                                    |
  | Klasa zawiera publiczne przeciazenia operatorow indeksujacych opowiedzialnych za     |
  |   wprowadzanie i odczytywanie wspolrzendych wektora oraz przeciazenie operatora      |
- |   dodawania, odejmowania, mnozenia, dzielenia dwoch wektorow.                        |
+ |   dodawania, odejmowania dwoch wektorow i mnozenia, dzielenia wektora razy skalar.   |
  */
 
 class Vector{
