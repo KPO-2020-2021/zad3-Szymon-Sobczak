@@ -1,12 +1,12 @@
 #include "rectangle.hh"
 
-/****************************************************************************************************************
- | Domyślny konstruktor obiektu typu Rectangle.                                                                 |
- | Konstruktor pozwala na inicjalizacje prostokata z uzyciem wektorow.                                          | 
- | Argumenty:                                                                                                   |
- |  brak.                                                                                                       | 
- | Zwraca:                                                                                                      |
- |  Prostokat o wierzcholakach zainicjowanych wartosciami wektorow zerowych.                                    |
+/************************************************************************************
+ | Domyślny konstruktor obiektu typu Rectangle.                                     |
+ | Konstruktor pozwala na inicjalizacje prostokata z uzyciem wektorow.              | 
+ | Argumenty:                                                                       |
+ |  brak.                                                                           | 
+ | Zwraca:                                                                          |
+ |  Prostokat o wierzcholakach zainicjowanych wartosciami wektorow zerowych.        |
  */
 Rectangle::Rectangle(){
     for (int i=0;i<4;i++)
@@ -132,13 +132,13 @@ std::ostream & operator << (std::ostream & Out, const Rectangle & Rc){
  | Funkcja wykonujaca operacje przeciazenia operatora >>.                                                               |
  | Funkcja sluzy do wprowadzania wartosci wspolrzednych wierzcholkow prostokata ze wskazanego strumienia wejsciowego.   |
  | Warunki wstepne:                                                                                                     |
- |    Strm- wybrany strumien musi byc typu istream.                                                                    |
- |    Rc - do poprawnego dzialania prostokat musi byc wczesniej zainicjowany.                                          |
+ |    Strm- wybrany strumien musi byc typu istream.                                                                     |
+ |    Rc - do poprawnego dzialania prostokat musi byc wczesniej zainicjowany.                                           |
  | Warunki koncowe:                                                                                                     |
  |   brak;                                                                                                              |
  | Argumenty:                                                                                                           |
- |    Strm - Referencja do strumienia typu istream, z ktorego maja zostac wczytane wspolrzedne wierzcholkow prostokata.|
- |    Vec - Referencja do prostokata, do ktorego maja zostac wpisane podane wspolrzedne weirzcholkow.                  |
+ |    Strm - Referencja do strumienia typu istream, z ktorego maja zostac wczytane wspolrzedne wierzcholkow prostokata. |
+ |    Vec - Referencja do prostokata, do ktorego maja zostac wpisane podane wspolrzedne weirzcholkow.                   |
  | Zwraca:                                                                                                              |
  |   Wczytany obiekt- prostokat.                                                                                        |
  */
@@ -300,7 +300,7 @@ bool Rectangle::collision(Rectangle const &ScRec) const{
     /* W celu zaoszczedzenia mocy obliczeniowej, pierwszym testem jest sprawdzenie, czy prostokaty leza wystarczajaco blisko siebie, aby moglo dojsc do kolizji */
     if(sqrt(pow(S1[0] - S2[0],2) + pow(S1[1] - S2[1],2)) > R1+R2)
         return false; /* Jesli prostokaty nie koliduja ze soba */
-    else /* Jesli prostokaty znajduja sie w swoim zasiegu- circle colliders, rozwazane jest mozliwe przeciecie sie bokow prostokatow */
+    else /* Jesli prostokaty znajduja sie w swoim zasiegu- circle colliders nachodza na siebie, rozwazane jest mozliwe przeciecie sie bokow prostokatow */
         for(int i=0;i<4;i++)
             for (int j=0;j<4;j++)
             {
