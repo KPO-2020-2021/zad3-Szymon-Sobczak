@@ -216,9 +216,9 @@ void Rectangle::Is_it_rec() const{
         if(a == b && a == d && c == b && c == d) 
             std::cout << ":) Przeciwlegle boki kwadratu sa sobie rowne." << std::endl;
         else if(b >= a && b >= c && d >= a && d >= c)
-            std::cout << ":) Dluzsze rzeciwlegle boki sa sobie rowne. "<< std::endl;
+            std::cout << ":) Dluzsze przeciwlegle boki sa sobie rowne. "<< std::endl;
         else
-            std::cout << ":) Krotsze rzeciwlegle boki sa sobie rowne." << std::endl;
+            std::cout << ":) Krotsze przeciwlegle boki sa sobie rowne." << std::endl;
     }
     else{ 
         if(a >= b && a >= d && c >= b && c >= d)
