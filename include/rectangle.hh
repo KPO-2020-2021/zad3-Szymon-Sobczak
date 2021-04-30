@@ -35,7 +35,7 @@ class Rectangle{
         Rectangle Rotate_rec(int const &multiplier, double const &angle); /* Obrot prostokata o zadany kat, zadana ilosc razy */
         void Is_it_rec() const;                                           /* Sprawdzenie czy dany prostokat ma rowne przeciwlegle boki */
         void Write_rec_to_file(const char *sNazwaPliku) const;            /* Zapis wartosci wspolrzendych wierzcholkow do pliku */
-        bool collision(Rectangle const &ScRec) const;                     /* Detekcja kolizji dwoch prostokatkow */
+        bool collision(Rectangle const &ScRec) const;                     /* Detekcja kolizji dwoch prostokatow */
 };
 
 int orientation(Vector const &p, Vector const &q, Vector const &r);       /* Fukncja pomocnicza detekcji kolizji, sprawdzenie orientacji 3 punktow */

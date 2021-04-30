@@ -6,7 +6,7 @@
  | Argumenty:                                                                                                   |
  |  brak.                                                                                                       | 
  | Zwraca:                                                                                                      |
- |  Prostokat o wierzcholakach zainicjowanych wartosciami werkotrow zerowych.                                   |
+ |  Prostokat o wierzcholakach zainicjowanych wartosciami wektorow zerowych.                                    |
  */
 Rectangle::Rectangle(){
     for (int i=0;i<4;i++)
@@ -132,13 +132,13 @@ std::ostream & operator << (std::ostream & Out, const Rectangle & Rc){
  | Funkcja wykonujaca operacje przeciazenia operatora >>.                                                               |
  | Funkcja sluzy do wprowadzania wartosci wspolrzednych wierzcholkow prostokata ze wskazanego strumienia wejsciowego.   |
  | Warunki wstepne:                                                                                                     |
- |   & Strm- wybrany strumien musi byc typu istream.                                                                    |
- |   & Rc - do poprawnego dzialania prostokat musi byc wczesniej zainicjowany.                                          |
+ |    Strm- wybrany strumien musi byc typu istream.                                                                    |
+ |    Rc - do poprawnego dzialania prostokat musi byc wczesniej zainicjowany.                                          |
  | Warunki koncowe:                                                                                                     |
  |   brak;                                                                                                              |
  | Argumenty:                                                                                                           |
- |   & Strm - Referencja do strumienia typu istream, z ktorego maja zostac wczytane wspolrzedne wierzcholkow prostokata.|
- |   & Vec - Referencja do prostokata, do ktorego maja zostac wpisane podane wspolrzedne weirzcholkow.                  |
+ |    Strm - Referencja do strumienia typu istream, z ktorego maja zostac wczytane wspolrzedne wierzcholkow prostokata.|
+ |    Vec - Referencja do prostokata, do ktorego maja zostac wpisane podane wspolrzedne weirzcholkow.                  |
  | Zwraca:                                                                                                              |
  |   Wczytany obiekt- prostokat.                                                                                        |
  */
